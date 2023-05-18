@@ -1,0 +1,206 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  font-family: 'Raleway', Helvetica, Arial, sans-serif;
+  background-image: url('../../img/background1.png');
+}
+
+/* nice input checkbox look */
+.control {
+  font-family: arial;
+  display: block;
+  position: relative;
+  text-align: center;
+  left: 40%;
+  padding-left: 30px;
+  margin-bottom: 5px;
+  padding-top: 3px;
+  cursor: pointer;
+  font-size: 16px;
+}
+.control input {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+}
+.control_indicator {
+  position: absolute;
+  top: 2px;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background: #e6e6e6;
+  border: 0px solid #000000;
+  border-radius: 0px;
+}
+.control:hover input ~ .control_indicator,
+.control input:focus ~ .control_indicator {
+  background: #cccccc;
+}
+
+.control input:checked ~ .control_indicator {
+  background: #2aa1c0;
+}
+.control:hover input:not([disabled]):checked ~ .control_indicator,
+.control input:checked:focus ~ .control_indicator {
+  background: #0e6647;
+}
+.control input:disabled ~ .control_indicator {
+  background: #e6e6e6;
+  opacity: 0.6;
+  pointer-events: none;
+}
+.control_indicator:after {
+  box-sizing: unset;
+  content: '';
+  position: absolute;
+  display: none;
+}
+.control input:checked ~ .control_indicator:after {
+  display: block;
+}
+.control-checkbox .control_indicator:after {
+  left: 8px;
+  top: 4px;
+  width: 3px;
+  height: 8px;
+  border: solid #ffffff;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+.control-checkbox input:disabled ~ .control_indicator:after {
+  border-color: #7b7b7b;
+}
+/* ------------------------------------------------------ */
+
+.table-text-up {
+  font-size: 1.5rem;
+}
+
+.table {
+  max-width: 38rem;
+  table-layout: fixed;
+  position: absolute;
+  text-align-last: center;
+}
+
+.table-wounds {
+  top: 6%;
+  left: 1%;
+}
+
+.table-burns {
+  top: 44%;
+  left: 1%;
+}
+
+@-moz-document url-prefix() {
+  .table-burns {
+    left: 1%;
+    top: 45.5%;
+  }
+}
+
+.table-breaks {
+  top: 6%;
+  left: 67%;
+}
+
+.table-diseases {
+  left: 67%;
+  top: 61.5%;
+}
+
+@-moz-document url-prefix() {
+  .table-diseases {
+    left: 67%;
+    top: 64%;
+  }
+}
+
+.table-lossof {
+  top: 6%;
+  left: 34%;
+}
+.table-summary {
+  left: 34%;
+  top: 14%;
+}
+
+/* button summary */
+.button-shower {
+  background-color: rgb(40, 41, 42);
+  border-radius: 1rem;
+  border: 0.3rem solid #1b1d1c;
+  display: inline-block;
+  cursor: pointer;
+  color: #ffffff;
+  font-family: Arial;
+  font-size: 2rem;
+  font-weight: bold;
+  text-decoration: none;
+  position: absolute;
+  width: 12rem;
+  height: 4rem;
+  top: 73.5%;
+  left: 12%;
+}
+
+@-moz-document url-prefix() {
+  .button-shower {
+    top: 76%;
+    left: 12%;
+  }
+}
+
+.button-shower:hover {
+  background-color: #5cbf2a;
+}
+/* to click outside of summary */
+.blur *:not(.no-blur) {
+  filter: blur(0.3rem);
+  animation: fadeout 0.3s ease-in-out forwards;
+}
+
+@keyframes fadeout {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0.99;
+  }
+}
+
+.blur-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+}
+
+.blur-overlay.visible {
+  display: block;
+  pointer-events: none;
+}
+
+.blocker {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: transparent;
+  z-index: 999;
+}
+
+.blocker.visible {
+  pointer-events: all;
+}

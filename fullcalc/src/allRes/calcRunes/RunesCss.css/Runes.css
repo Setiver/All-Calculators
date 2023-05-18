@@ -1,0 +1,118 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+@font-face {
+  font-family: 'RunesFont';
+  src: url(./Anglodavek-a55E.ttf);
+}
+
+.background-runes {
+  background-image: url('../../img/runetable.jpg');
+  height: 100vh;
+  font-family: 'RunesFont', serif;
+}
+
+/* position of text */
+.text-abowe-buttons {
+  position: inherit;
+  text-align: center;
+  font-size: 3rem;
+  font-family: inherit;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: rgb(255, 255, 255);
+}
+
+.runes-lvl-position {
+  color: black;
+  position: absolute;
+  top: 9%;
+  left: 20%;
+  transform: translate(-50%, -50%);
+}
+
+.item-size-position {
+  color: black;
+  position: absolute;
+  top: 9%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.item-material-position {
+  color: black;
+  position: absolute;
+  top: 9%;
+  right: 2.5%;
+  transform: translate(-50%, -50%);
+}
+
+/* buttons look */
+
+.buttons-styles {
+  background-color: black;
+  color: white;
+  font-size: 20px;
+  font-family: inherit;
+  padding: 10px 60px;
+  border-radius: 5px;
+  margin: 10px 10px;
+  cursor: pointer;
+}
+
+.buttons-styles:active {
+  background-color: white;
+  color: rgb(0, 0, 0);
+}
+
+/* buttons position */
+.Block button {
+  display: block;
+  width: 27rem;
+  text-align: center;
+}
+/* position of all buttons */
+.container-runes {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  max-width: 100%;
+  height: 80vh;
+}
+
+.row {
+  display: flex;
+  max-width: 100%;
+  flex-direction: row;
+}
+/* reset button position */
+.button-reset {
+  position: absolute;
+  font-size: 3rem;
+  bottom: 5%;
+  right: 5%;
+}
+
+/* cost  */
+.equation {
+  position: absolute;
+  left: 50%;
+  bottom: -3%;
+  background: rgb(51, 51, 51);
+  align-items: center;
+  border: 4px solid #eee;
+  font-family: inherit;
+  color: rgb(0, 0, 0);
+  font-size: 4.5rem;
+  height: 7rem;
+  width: 50rem;
+  text-align: center;
+  align-items: center;
+  display: block;
+  transform: translate(-50%, -50%);
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: rgb(255, 255, 255);
+}

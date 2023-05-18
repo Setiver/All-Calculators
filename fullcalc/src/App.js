@@ -1,20 +1,30 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.css';
+import { Route, Routes } from 'react-router-dom';
+
 import NavbarSide from './allRes/Navbar/Navbar';
-import CalcDMG from './allRes/calcDamage/calc';
-import './allRes/calcDamage/DamageCSS/App.css';
-import './allRes/calcDamage/DamageCSS/App-laptop.css';
-import './allRes/calcDamage/DamageCSS/App-laptopS.css';
-import './allRes/calcDamage/DamageCSS/App-laptopM.css';
-import './allRes/calcDamage/DamageCSS/App-mobileM.css';
-import './allRes/calcDamage/DamageCSS/App-mobileL.css';
+
+import CalcDMG from './allRes/calcDamage/calcDamage';
+import Heal from './allRes/calcHeal/Heal';
+import RunesLvL from './allRes/calcRunes/Runes';
+
+import './allRes/calcHeal/HealCSS/Heal.css';
+import './allRes/calcDamage/DamageCSS/DamageCss.css';
+import './allRes/calcRunes/RunesCss.css/Runes.css';
 
 function App() {
   return (
-    <div className="App">
+    <>
       <NavbarSide />
-      <CalcDMG />
-    </div>
+      <div className="App">
+        <Routes>
+          <Route path="*" element={<CalcDMG />} />
+          <Route path="/damage" element={<CalcDMG />} />
+          <Route path="/heal" element={<Heal />} />
+          <Route path="/runes" element={<RunesLvL />} />
+        </Routes>
+      </div>
+    </>
   );
 }
 
