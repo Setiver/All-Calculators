@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 const CalcDMG = () => {
   // ---------------------------------- //
@@ -42,6 +42,8 @@ const CalcDMG = () => {
   // roll number holder
   const [rollValue, setRollValue] = useState('Roll');
   const [trialValue, setTrialValue] = useState('');
+  const [sinValue, setSinValue] = useState('');
+  const [sinValueFifty, setSinValueFifty] = useState('');
   // ---------------------------------- //
 
   // keep all resists for reset button
@@ -64,6 +66,9 @@ const CalcDMG = () => {
     setVoidDamageValue('');
     setHealValue('');
     setRollValue('Roll');
+    setTrialValue('');
+    setSinValue('');
+    setSinValueFifty('');
     resistsAllHolder();
   };
 
@@ -80,8 +85,6 @@ const CalcDMG = () => {
     setHistoryHolderBarrier([]);
     setHistoryHolderArmor([]);
     setHistoryHolderHP([]);
-    setRollValue('Roll');
-    setTrialValue('');
     damageAllHolder();
     resistsAllHolder();
   };
@@ -208,15 +211,98 @@ const CalcDMG = () => {
     return <div>{historia}</div>;
   };
 
+  // Dice Roll
+
+  const rollBackground = useRef(null);
   const diceRollNumber = () => {
-    let numberRoll = Math.trunc(Math.random() * 100) + 1;
-    if ([47, 69, 7, 95, 13, 88, 9, 76, 23, 55, 31, 74, 8, 100, 3].includes(numberRoll)) {
+    let numberRoll = Math.floor(Math.random() * 100) + 1;
+
+    if ([47, 7, 95, 88, 76, 55, 74, 100].includes(numberRoll)) {
       setRollValue(Number(numberRoll));
-      document.querySelector('.number-dice-roll').style.backgroundColor = 'green';
+      rollBackground.current.style.backgroundColor = 'green';
+    } else if ([13, 9, 23, 31, 8, 3].includes(numberRoll)) {
+      setRollValue(Number(numberRoll));
+      rollBackground.current.style.backgroundColor = 'red';
+    } else if ([69].includes(numberRoll)) {
+      setRollValue(Number(numberRoll));
+      rollBackground.current.style.backgroundColor = 'rgb(255, 56, 212)';
+    } else if ([1, 2].includes(numberRoll)) {
+      setRollValue(Number(numberRoll));
+      rollBackground.current.style.backgroundColor = 'purple';
     } else {
       setRollValue(Number(numberRoll + trialValue));
-      document.querySelector('.number-dice-roll').style.backgroundColor = 'rgb(213, 113, 0)';
+      rollBackground.current.style.backgroundColor = 'rgb(213, 113, 0)';
     }
+  };
+
+  const SinsRoll = () => {
+    const sinBackground = useRef(null);
+
+    const sinsArr = ['Pride', 'Greed', 'Envy', 'Gluttony', 'Sloth', 'Wrath', 'Lust'];
+
+    const sinRoll = () => {
+      let sinRoll = Math.floor(Math.random() * 7);
+      setSinValue(sinRoll);
+    };
+
+    useEffect(() => {
+      const sinsColorArr = [
+        'purple',
+        'gold',
+        'green',
+        'brown',
+        'rgb(112, 127, 146)',
+        'red',
+        'rgb(255, 61, 236)',
+      ];
+
+      if (sinValue === '') {
+        sinBackground.current.style.backgroundColor = 'rgb(213, 113, 0)';
+      }
+
+      sinBackground.current.style.backgroundColor = sinsColorArr[sinValue];
+    }, []);
+
+    const sinFiftyBackground = useRef(null);
+
+    const sinRollFifty = () => {
+      let sinRoll = Math.floor(Math.random() * 100) + 1;
+      setSinValueFifty(sinRoll);
+    };
+
+    useEffect(() => {
+      if (sinValueFifty <= 50) {
+        sinFiftyBackground.current.style.backgroundColor = 'red';
+      }
+      if (sinValueFifty > 50) {
+        sinFiftyBackground.current.style.backgroundColor = 'green';
+      }
+      if (sinValueFifty === '') {
+        sinFiftyBackground.current.style.backgroundColor = 'rgb(213, 113, 0)';
+      }
+    });
+
+    return (
+      <>
+        <div>
+          <button
+            className="number-dice-roll button-look sins"
+            ref={sinBackground}
+            onClick={sinRoll}
+            value={sinsArr[sinValue]}>
+            {sinsArr[sinValue]}
+          </button>
+
+          <button
+            className="number-dice-roll button-look half"
+            ref={sinFiftyBackground}
+            onClick={sinRollFifty}
+            value={sinValueFifty}>
+            {sinValueFifty}
+          </button>
+        </div>
+      </>
+    );
   };
 
   // -------------------------------------------------------------------- //
@@ -609,6 +695,7 @@ const CalcDMG = () => {
         <div className="div-dice-roll">
           <button
             className="number-dice-roll button-look"
+            ref={rollBackground}
             onClick={diceRollNumber}
             value={rollValue}>
             {rollValue}
@@ -620,6 +707,7 @@ const CalcDMG = () => {
             value={trialValue !== 0 ? trialValue : ''}
             placeholder="TRIAL"
           />
+          {rollValue === 7 ? <SinsRoll /> : ''}
         </div>
       </div>
     </>

@@ -394,7 +394,6 @@
 
   .button-list-damage {
     background-color: #000000;
-    cursor: none;
     position: absolute;
     width: 4.5rem;
     top: 10.6rem;
@@ -441,5 +440,20 @@
 
   .input-look.trial {
     width: 16rem;
+  }
+  .number-dice-roll.sins {
+    top: 16rem;
+    height: 6rem;
+    width: 7.5rem;
+    font-size: 2rem;
+    position: absolute;
+  }
+  .number-dice-roll.half {
+    top: 16rem;
+    left: 9rem;
+    height: 6rem;
+    width: 7.5rem;
+    font-size: 2.5rem;
+    position: absolute;
   }
 }
