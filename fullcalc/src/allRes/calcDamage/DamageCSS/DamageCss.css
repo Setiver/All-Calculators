@@ -361,10 +361,15 @@
   }
 
   .list-group.left {
-    height: 20rem;
+    padding-top: 2rem;
+    padding-bottom: 1rem;
+    height: 17rem;
+    top: 1.5rem;
   }
   .list-group.right {
-    height: 22.6rem;
+    height: 20rem;
+    top: 3rem;
+    border-radius: 0;
   }
 
   .full-damage-list-div {
@@ -375,7 +380,7 @@
   }
 
   .history-damage-list-div {
-    top: 47.7%;
+    top: 45.5%;
     left: 64%;
     position: absolute;
     transform: translate(-50%, -50%);
@@ -390,9 +395,20 @@
     font-size: 2rem;
     text-align: center;
     border-bottom: #646464 0.15rem solid;
+    position: absolute;
+    text-align: center;
+    background-color: black;
+    color: white;
+    bottom: 6rem;
+    left: -6rem;
+    list-style: none;
+    width: 12rem;
+    z-index: 1;
   }
 
   .button-list-damage {
+    pointer-events: none;
+    cursor: default;
     background-color: #000000;
     position: absolute;
     width: 4.5rem;
@@ -417,6 +433,8 @@
     display: none;
   }
 
+  /* dice */
+
   .div-dice-roll {
     position: absolute;
     border: #000000 0.5rem solid;
@@ -439,8 +457,27 @@
   }
 
   .input-look.trial {
-    width: 16rem;
+    width: 8rem;
+    flex: 1;
+    height: auto;
   }
+
+  .previous-number {
+    background-color: #6d8f8e;
+    text-align: center;
+    font-size: 1.5rem;
+    border: none;
+    flex: 1;
+    pointer-events: none;
+    cursor: default;
+  }
+
+  .previous-and-input-div {
+    display: flex;
+    width: 17.05rem;
+    height: 3rem;
+  }
+
   .number-dice-roll.sins {
     top: 16rem;
     height: 6rem;
@@ -455,5 +492,76 @@
     width: 7.5rem;
     font-size: 2.5rem;
     position: absolute;
+  }
+  /* button choise */
+
+  .buttons-choise-div {
+    position: absolute;
+    top: 30%;
+    left: 1.5%;
+  }
+
+  .buttons-choise-look {
+    border-color: #1e1e1e;
+    background-color: #222222;
+    opacity: 0.8;
+    background-image: linear-gradient(
+        30deg,
+        #404040 12%,
+        transparent 12.5%,
+        transparent 87%,
+        #404040 87.5%,
+        #404040
+      ),
+      linear-gradient(
+        150deg,
+        #404040 12%,
+        transparent 12.5%,
+        transparent 87%,
+        #404040 87.5%,
+        #404040
+      ),
+      linear-gradient(
+        30deg,
+        #404040 12%,
+        transparent 12.5%,
+        transparent 87%,
+        #404040 87.5%,
+        #404040
+      ),
+      linear-gradient(
+        150deg,
+        #404040 12%,
+        transparent 12.5%,
+        transparent 87%,
+        #404040 87.5%,
+        #404040
+      ),
+      linear-gradient(
+        60deg,
+        #40404077 25%,
+        transparent 25.5%,
+        transparent 75%,
+        #40404077 75%,
+        #40404077
+      ),
+      linear-gradient(
+        60deg,
+        #40404077 25%,
+        transparent 25.5%,
+        transparent 75%,
+        #40404077 75%,
+        #40404077
+      );
+    background-size: 20px 35px;
+    background-position: 0 0, 0 0, 10px 18px, 10px 18px, 0 0, 10px 18px;
+    color: #ffffff;
+    font-size: 3rem;
+    height: 4rem;
+    width: 5rem;
+    text-align: center;
+  }
+  .buttons-choise-look.hundred {
+    width: 10.25rem;
   }
 }

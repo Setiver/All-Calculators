@@ -44,8 +44,13 @@ const CalcDMG = () => {
   const [trialValue, setTrialValue] = useState('');
   const [sinValue, setSinValue] = useState('');
   const [sinValueFifty, setSinValueFifty] = useState('');
-  // ---------------------------------- //
+  const [rollMath, setRollMath] = useState('');
+  const [previousNumber, setPreviousNumber] = useState('');
 
+  const rollBackground = useRef(null);
+  const sinBackground = useRef(null);
+  const sinFiftyBackground = useRef(null);
+  // ---------------------------------- //
   // keep all resists for reset button
   const resistsAllHolder = () => {
     setResistValueDamage('');
@@ -85,6 +90,8 @@ const CalcDMG = () => {
     setHistoryHolderBarrier([]);
     setHistoryHolderArmor([]);
     setHistoryHolderHP([]);
+    setPreviousNumber('');
+
     damageAllHolder();
     resistsAllHolder();
   };
@@ -213,31 +220,36 @@ const CalcDMG = () => {
 
   // Dice Roll
 
-  const rollBackground = useRef(null);
   const diceRollNumber = () => {
-    let numberRoll = Math.floor(Math.random() * 100) + 1;
+    if (rollValue !== 'Roll') setPreviousNumber(rollValue);
 
-    if ([47, 7, 95, 88, 76, 55, 74, 100].includes(numberRoll)) {
-      setRollValue(Number(numberRoll));
-      rollBackground.current.style.backgroundColor = 'green';
-    } else if ([13, 9, 23, 31, 8, 3].includes(numberRoll)) {
-      setRollValue(Number(numberRoll));
-      rollBackground.current.style.backgroundColor = 'red';
-    } else if ([69].includes(numberRoll)) {
-      setRollValue(Number(numberRoll));
-      rollBackground.current.style.backgroundColor = 'rgb(255, 56, 212)';
-    } else if ([1, 2].includes(numberRoll)) {
-      setRollValue(Number(numberRoll));
-      rollBackground.current.style.backgroundColor = 'purple';
+    let numberRoll = Math.floor(Math.random() * rollMath) + 1;
+
+    if (rollMath === 100) {
+      if ([47, 7, 95, 88, 76, 55, 74, 100].includes(numberRoll)) {
+        setRollValue(Number(numberRoll));
+        rollBackground.current.style.backgroundColor = 'green';
+      } else if ([13, 9, 23, 31, 8, 3].includes(numberRoll)) {
+        setRollValue(Number(numberRoll));
+        rollBackground.current.style.backgroundColor = 'red';
+      } else if ([69].includes(numberRoll)) {
+        setRollValue(Number(numberRoll));
+        rollBackground.current.style.backgroundColor = 'rgb(255, 56, 212)';
+      } else if ([1, 2].includes(numberRoll)) {
+        setRollValue(Number(numberRoll));
+        rollBackground.current.style.backgroundColor = 'purple';
+      } else {
+        setRollValue(Number(numberRoll + trialValue));
+        rollBackground.current.style.backgroundColor = 'rgb(213, 113, 0)';
+      }
     } else {
       setRollValue(Number(numberRoll + trialValue));
       rollBackground.current.style.backgroundColor = 'rgb(213, 113, 0)';
     }
   };
 
+  // create two buttons for 7
   const SinsRoll = () => {
-    const sinBackground = useRef(null);
-
     const sinsArr = ['Pride', 'Greed', 'Envy', 'Gluttony', 'Sloth', 'Wrath', 'Lust'];
 
     const sinRoll = () => {
@@ -262,8 +274,6 @@ const CalcDMG = () => {
 
       sinBackground.current.style.backgroundColor = sinsColorArr[sinValue];
     }, []);
-
-    const sinFiftyBackground = useRef(null);
 
     const sinRollFifty = () => {
       let sinRoll = Math.floor(Math.random() * 100) + 1;
@@ -349,12 +359,16 @@ const CalcDMG = () => {
           />
         </div>
         <div>
-          <button
-            className="button-look barier-button"
-            value={buttonValueBarier}
-            onClick={damageOnClick}>
-            {buttonValueBarier}
-          </button>
+          {buttonValueBarier >= 0 ? (
+            <button
+              className="button-look barier-button"
+              value={buttonValueBarier}
+              onClick={damageOnClick}>
+              {buttonValueBarier}
+            </button>
+          ) : (
+            ''
+          )}
         </div>
 
         {/* -----------------ARMOR----------------- */}
@@ -378,12 +392,16 @@ const CalcDMG = () => {
           />
         </div>
         <div>
-          <button
-            className="button-look armor-button"
-            value={buttonValueArmor}
-            onClick={damageOnClick}>
-            {buttonValueArmor}
-          </button>
+          {buttonValueArmor >= 0 ? (
+            <button
+              className="button-look armor-button"
+              value={buttonValueArmor}
+              onClick={damageOnClick}>
+              {buttonValueArmor}
+            </button>
+          ) : (
+            ''
+          )}
         </div>
 
         {/* -----------------HP----------------- */}
@@ -400,12 +418,16 @@ const CalcDMG = () => {
             value={hpValue > 0 ? hpValue : ''}
           />
         </div>
-        <div>
-          <button className="button-look hp-button" value={buttonValueHP} onClick={damageOnClick}>
-            {buttonValueHP}
-          </button>
-        </div>
 
+        {buttonValueHP >= 0 ? (
+          <div>
+            <button className="button-look hp-button" value={buttonValueHP} onClick={damageOnClick}>
+              {buttonValueHP}
+            </button>
+          </div>
+        ) : (
+          ''
+        )}
         {/* -----------------Mana----------------- */}
         <div className="mana-container">
           <p className="text-up">Mana</p>
@@ -427,12 +449,16 @@ const CalcDMG = () => {
           />
         </div>
         <div>
-          <button
-            className="button-look mana-button"
-            value={buttonValueMana}
-            onClick={() => setButtonValueMana(buttonValueMana - 1)}>
-            {buttonValueMana}
-          </button>
+          {buttonValueMana >= 0 ? (
+            <button
+              className="button-look mana-button"
+              value={buttonValueMana}
+              onClick={() => setButtonValueMana(buttonValueMana - 1)}>
+              {buttonValueMana}
+            </button>
+          ) : (
+            ''
+          )}
         </div>
 
         {/* ---------------------------------------------------- */}
@@ -473,8 +499,8 @@ const CalcDMG = () => {
         {/* ---------------------------------------------------- */}
         {/* -----------------DamageList----------------- */}
         <div className="full-damage-list-div">
+          <p className="full-damage-text-up">DAMAGE</p>
           <ul className="list-group left">
-            <p className="full-damage-text-up">DAMAGE</p>
             {damageValue > 0 ? <li className="list-group-item">⚔ Damage: {damageValue}</li> : ''}
             {resistValueDamage !== 0 && resistValueDamage !== '' && resistValueDamage <= 100 ? (
               <li className="list-group-item">🛡 Resistance: {resistValueDamage}%</li>
@@ -534,7 +560,7 @@ const CalcDMG = () => {
             ) : (
               ''
             )}
-            {resistValueVoid > 0 ? (
+            {voidDamageValue > 0 ? (
               <li className="list-group-item"> 👾 Void: {voidDamageValue}</li>
             ) : (
               ''
@@ -555,16 +581,15 @@ const CalcDMG = () => {
         </div>
         {/* -----------------HostoryDamageList----------------- */}
         <div className="history-damage-list-div">
+          <p className="full-damage-text-up">HISTORY</p>
           <ul className="list-group right">
-            <li>
-              <p className="full-damage-text-up">HISTORY</p>
-            </li>
+            <li></li>
             <HistoryHandler type={'Barrier'} holder={historyHolderBarrier} />
             <HistoryHandler type={'Armor'} holder={historyHolderArmor} />
             <HistoryHandler type={'HP'} holder={historyHolderHP} />
           </ul>
         </div>
-        {/* -----------------BottomSideInputs----------------- */}
+        {/* -----------------BottomInputs----------------- */}
         {/* -----------------Burn----------------- */}
         <div className="burn-container">
           <p className="text-up">🔥</p>
@@ -700,14 +725,45 @@ const CalcDMG = () => {
             value={rollValue}>
             {rollValue}
           </button>
-          <input
-            type="number"
-            className="input-look trial"
-            onChange={event => onChangeHandler(event, setTrialValue)}
-            value={trialValue !== 0 ? trialValue : ''}
-            placeholder="TRIAL"
-          />
+          <div className="previous-and-input-div">
+            <input
+              type="number"
+              className="input-look trial"
+              onChange={event => onChangeHandler(event, setTrialValue)}
+              value={trialValue !== 0 ? trialValue : ''}
+              placeholder="TRIAL"
+            />
+            <button className="previous-number">Prev: {previousNumber}</button>
+          </div>
           {rollValue === 7 ? <SinsRoll /> : ''}
+        </div>
+
+        <div className="buttons-choise-div">
+          <div></div>
+          <button className="buttons-choise-look" onClick={() => setRollMath(4)}>
+            4
+          </button>
+          <button className="buttons-choise-look" onClick={() => setRollMath(6)}>
+            6
+          </button>
+          <div></div>
+          <button className="buttons-choise-look" onClick={() => setRollMath(8)}>
+            8
+          </button>
+          <button className="buttons-choise-look" onClick={() => setRollMath(10)}>
+            10
+          </button>
+          <div></div>
+          <button className="buttons-choise-look" onClick={() => setRollMath(12)}>
+            12
+          </button>
+          <button className="buttons-choise-look" onClick={() => setRollMath(20)}>
+            20
+          </button>
+          <div></div>
+          <button className="buttons-choise-look  hundred" onClick={() => setRollMath(100)}>
+            100
+          </button>
         </div>
       </div>
     </>
