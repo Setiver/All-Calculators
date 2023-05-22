@@ -74,6 +74,7 @@ const CalcDMG = () => {
     setTrialValue('');
     setSinValue('');
     setSinValueFifty('');
+    setPreviousNumber('');
     resistsAllHolder();
   };
 
@@ -90,7 +91,6 @@ const CalcDMG = () => {
     setHistoryHolderBarrier([]);
     setHistoryHolderArmor([]);
     setHistoryHolderHP([]);
-    setPreviousNumber('');
     setRollMath(100);
 
     damageAllHolder();
@@ -341,76 +341,78 @@ const CalcDMG = () => {
         {/* -----------------RightSideInputs----------------- */}
         {/* -----------------BARIER----------------- */}
         <div className="barrier-armor-hp-mana-container">
-          <p className="text-up">Barrier</p>
-          <input
-            type="number"
-            className="barrier-input input-look"
-            onChange={event => onChangeHandler(event, setBarierValue)}
-            onKeyDown={event =>
-              handlerKeyDown(
-                event,
-                '.barrier-input',
-                'rgb(0, 243, 186)',
-                setButtonValueBarier,
-                barierValue
-              )
-            }
-            placeholder="Enter"
-            value={barierValue > 0 ? barierValue : ''}
-          />
+          <div className="barrier-armor-div-mobile">
+            <p className="text-up">Barrier</p>
+            <input
+              type="number"
+              className="barrier-input input-look"
+              onChange={event => onChangeHandler(event, setBarierValue)}
+              onKeyDown={event =>
+                handlerKeyDown(
+                  event,
+                  '.barrier-input',
+                  'rgb(0, 243, 186)',
+                  setButtonValueBarier,
+                  barierValue
+                )
+              }
+              placeholder="Enter"
+              value={barierValue > 0 ? barierValue : ''}
+            />
 
-          {/* -----------------ARMOR----------------- */}
-          <p className="text-up">Armor</p>
-          <input
-            type="number"
-            className="armor-input input-look"
-            onChange={event => onChangeHandler(event, setArmorValue)}
-            onKeyDown={event =>
-              handlerKeyDown(
-                event,
-                '.armor-input',
-                'rgb(136, 136, 136)',
-                setButtonValueArmor,
-                armorValue
-              )
-            }
-            placeholder="Enter"
-            value={armorValue > 0 ? armorValue : ''}
-          />
+            {/* -----------------ARMOR----------------- */}
+            <p className="text-up">Armor</p>
+            <input
+              type="number"
+              className="armor-input input-look"
+              onChange={event => onChangeHandler(event, setArmorValue)}
+              onKeyDown={event =>
+                handlerKeyDown(
+                  event,
+                  '.armor-input',
+                  'rgb(136, 136, 136)',
+                  setButtonValueArmor,
+                  armorValue
+                )
+              }
+              placeholder="Enter"
+              value={armorValue > 0 ? armorValue : ''}
+            />
+          </div>
+          <div className="hp-mana-div-mobile">
+            {/* -----------------HP----------------- */}
+            <p className="text-up">HP</p>
+            <input
+              type="number"
+              className="hp-input input-look"
+              onChange={event => onChangeHandler(event, setHpValue)}
+              onKeyDown={event =>
+                handlerKeyDown(event, '.hp-input', 'rgb(163, 0, 0)', setButtonValueHP, hpValue)
+              }
+              placeholder="Enter"
+              value={hpValue > 0 ? hpValue : ''}
+            />
 
-          {/* -----------------HP----------------- */}
-          <p className="text-up">HP</p>
-          <input
-            type="number"
-            className="hp-input input-look"
-            onChange={event => onChangeHandler(event, setHpValue)}
-            onKeyDown={event =>
-              handlerKeyDown(event, '.hp-input', 'rgb(163, 0, 0)', setButtonValueHP, hpValue)
-            }
-            placeholder="Enter"
-            value={hpValue > 0 ? hpValue : ''}
-          />
-
-          {/* -----------------Mana----------------- */}
-          <p className="text-up">Mana</p>
-          <input
-            type="number"
-            className="mana-input input-look"
-            onChange={event => onChangeHandler(event, setManaValue)}
-            onKeyDown={event =>
-              handlerKeyDown(
-                event,
-                '.mana-input',
-                'rgb(0, 204, 255)',
-                setButtonValueMana,
-                manaValue
-              )
-            }
-            placeholder="Enter"
-            value={manaValue > 0 ? manaValue : ''}
-          />
+            {/* -----------------Mana----------------- */}
+            <p className="text-up">Mana</p>
+            <input
+              type="number"
+              className="mana-input input-look"
+              onChange={event => onChangeHandler(event, setManaValue)}
+              onKeyDown={event =>
+                handlerKeyDown(
+                  event,
+                  '.mana-input',
+                  'rgb(0, 204, 255)',
+                  setButtonValueMana,
+                  manaValue
+                )
+              }
+              placeholder="Enter"
+              value={manaValue > 0 ? manaValue : ''}
+            />
+          </div>
         </div>
-
         {/* -----------------ButtonsUP----------------- */}
         <div className="buttons-up-div">
           {/* -----------------Barrier----------------- */}
@@ -586,7 +588,7 @@ const CalcDMG = () => {
         {/* -----------------BottomInputs----------------- */}
         {/* -----------------Burn----------------- */}
         <div className="burn-container">
-          <p className="text-up">🔥</p>
+          <p className="text-up emoji">🔥</p>
           <input
             type="number"
             className="additional-damage input-look"
@@ -596,7 +598,7 @@ const CalcDMG = () => {
           />
         </div>
         <div className={`burn-container-resist ${burnDamageValue > 0 ? 'show' : ''}`}>
-          <p className="text-up">🚭</p>
+          <p className="text-up emoji">🚭</p>
           <input
             type="number"
             className="additional-damage  input-look"
@@ -611,7 +613,7 @@ const CalcDMG = () => {
         </div>
         {/* -----------------Cold----------------- */}
         <div className="cold-container">
-          <p className="text-up">❄️</p>
+          <p className="text-up emoji">❄️</p>
           <input
             type="number"
             className="additional-damage  input-look"
@@ -621,7 +623,7 @@ const CalcDMG = () => {
           />
         </div>
         <div className={`cold-container-resist ${coldDamageValue > 0 ? 'show' : ''}`}>
-          <p className="text-up">🧥</p>
+          <p className="text-up emoji">🧥</p>
           <input
             type="number"
             className="additional-damage  input-look"
@@ -636,7 +638,7 @@ const CalcDMG = () => {
         </div>
         {/* -----------------Poison----------------- */}
         <div className="poison-container">
-          <p className="text-up">🧪</p>
+          <p className="text-up emoji">🧪</p>
           <input
             type="number"
             className="additional-damage  input-look"
@@ -646,7 +648,7 @@ const CalcDMG = () => {
           />
         </div>
         <div className={`poison-container-resist ${poisonDamageValue > 0 ? 'show' : ''}`}>
-          <p className="text-up">💊</p>
+          <p className="text-up emoji">💊</p>
           <input
             type="number"
             className="additional-damage  input-look"
@@ -661,7 +663,7 @@ const CalcDMG = () => {
         </div>
         {/* -----------------Bleed----------------- */}
         <div className="bleed-container">
-          <p className="text-up">🩸</p>
+          <p className="text-up emoji">🩸</p>
           <input
             type="number"
             className="additional-damage  input-look"
@@ -671,7 +673,7 @@ const CalcDMG = () => {
           />
         </div>
         <div className={`bleed-container-resist ${bleedDamageValue > 0 ? 'show' : ''}`}>
-          <p className="text-up">🩹</p>
+          <p className="text-up emoji">🩹</p>
           <input
             type="number"
             className="additional-damage  input-look"
@@ -686,7 +688,7 @@ const CalcDMG = () => {
         </div>
         {/* -----------------Void----------------- */}
         <div className="void-container">
-          <p className="text-up">👾</p>
+          <p className="text-up emoji">👾</p>
           <input
             type="number"
             className="additional-damage  input-look"
@@ -696,7 +698,7 @@ const CalcDMG = () => {
           />
         </div>
         <div className={`void-container-resist ${voidDamageValue > 0 ? 'show' : ''}`}>
-          <p className="text-up">🚫</p>
+          <p className="text-up emoji">🚫</p>
           <input
             type="number"
             className="additional-damage  input-look"
