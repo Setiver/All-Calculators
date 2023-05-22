@@ -240,11 +240,11 @@ const CalcDMG = () => {
         setRollValue(Number(numberRoll));
         rollBackground.current.style.backgroundColor = 'purple';
       } else {
-        setRollValue(Number(numberRoll + trialValue));
+        setRollValue(Number(numberRoll));
         rollBackground.current.style.backgroundColor = 'rgb(213, 113, 0)';
       }
     } else {
-      setRollValue(Number(numberRoll + trialValue));
+      setRollValue(Number(numberRoll));
       rollBackground.current.style.backgroundColor = 'rgb(213, 113, 0)';
     }
   };
@@ -714,12 +714,8 @@ const CalcDMG = () => {
         <div className="div-dice-roll">
           {rollValue !== 'Roll' && trialValue !== '' && trialValue !== 0 ? (
             <p className="roll-dice-equation">
-              {rollMath === 100 &&
-              [13, 9, 23, 31, 8, 3, 69, 1, 2, 47, 7, 95, 88, 76, 55, 74, 100].includes(rollValue)
-                ? `${rollValue}`
-                : `${rollValue - trialValue}`}
-
-              {trialValue > 0 ? ` + ${trialValue}` : ` - ${-trialValue} `}
+              {rollValue} {trialValue > 0 ? ` + ${trialValue}` : ` - ${-trialValue} `} ={' '}
+              {rollValue + trialValue}
             </p>
           ) : (
             ''
@@ -728,8 +724,11 @@ const CalcDMG = () => {
             className="number-dice-roll button-look"
             ref={rollBackground}
             onClick={diceRollNumber}
-            value={rollValue}>
-            {rollValue}
+            value={rollValue + trialValue}>
+            {rollMath === 100 &&
+            [13, 9, 23, 31, 8, 3, 69, 1, 2, 47, 7, 95, 88, 76, 55, 74, 100].includes(rollValue)
+              ? rollValue
+              : rollValue + trialValue}
           </button>
           <div className="previous-and-input-div">
             <input
@@ -740,7 +739,13 @@ const CalcDMG = () => {
               placeholder="TRIAL"
             />
             <button className="previous-number">
-              Prev: {previousNumber !== '' ? previousNumber : '???'}
+              Prev:
+              {rollMath === 100 &&
+              [13, 9, 23, 31, 8, 3, 69, 1, 2, 47, 7, 95, 88, 76, 55, 74, 100].includes(
+                previousNumber
+              )
+                ? previousNumber
+                : previousNumber + trialValue}
             </button>
           </div>
           {rollValue === 7 ? <SinsRoll /> : ''}
