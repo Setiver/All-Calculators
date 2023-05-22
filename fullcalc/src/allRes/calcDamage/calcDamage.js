@@ -114,7 +114,7 @@ const CalcDMG = () => {
   }, []);
 
   // change color of input whene hit Enter and give button a value
-  const setupButtonInputLeft = (event, selector, color, setValueButton, seter) => {
+  const setupButtonInputRight = (event, selector, color, setValueButton, seter) => {
     event.preventDefault();
     if (Number(event.target.value) > 0) {
       seter(Number(event.target.value));
@@ -340,7 +340,7 @@ const CalcDMG = () => {
               type="number"
               className="barrier-input input-look"
               onChange={event =>
-                setupButtonInputLeft(
+                setupButtonInputRight(
                   event,
                   '.barrier-input',
                   'rgb(0, 243, 186)',
@@ -358,7 +358,7 @@ const CalcDMG = () => {
               type="number"
               className="armor-input input-look"
               onChange={event =>
-                setupButtonInputLeft(
+                setupButtonInputRight(
                   event,
                   '.armor-input',
                   'rgb(136, 136, 136)',
@@ -377,7 +377,7 @@ const CalcDMG = () => {
               type="number"
               className="hp-input input-look"
               onChange={event =>
-                setupButtonInputLeft(
+                setupButtonInputRight(
                   event,
                   '.hp-input',
                   'rgb(163, 0, 0)',
@@ -395,7 +395,7 @@ const CalcDMG = () => {
               type="number"
               className="mana-input input-look"
               onChange={event =>
-                setupButtonInputLeft(
+                setupButtonInputRight(
                   event,
                   '.mana-input',
                   'rgb(0, 204, 255)',
