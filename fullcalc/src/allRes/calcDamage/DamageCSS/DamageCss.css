@@ -1,567 +1,486 @@
-@media (min-width: 1920px) {
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: inherit;
-  }
+/* @media (min-width: 1920px) { */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
 
-  body {
-    background-image: url(../../img/background1.png);
-    width: 100%;
-    height: 100%;
-    font-family: 'Raleway', Helvetica, Arial, sans-serif;
-  }
+body {
+  background-image: url(../../img/background1.png);
+  width: 100%;
+  height: 100%;
+  font-family: 'Raleway', Helvetica, Arial, sans-serif;
+}
 
-  /* hide arrows from input */
-  input::-webkit-outer-spin-button,
-  input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-  }
-  /* this one is for mozilla */
-  input[type='number'] {
-    -moz-appearance: textfield;
-    appearance: textfield;
-  }
+/* hide arrows from input */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+/* this one is for mozilla */
+input[type='number'] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
 
-  /* input look */
-  .input-look {
-    padding: 0.45rem;
-    width: 13rem;
-    height: 2rem;
-    font-size: 1.55rem;
-    border-width: 0.15rem;
-    border-color: #cccccc;
-    background-color: #ffffff;
-    color: #000000;
-    border-style: solid;
-  }
+/* input look */
+.input-look {
+  padding: 0.45rem;
+  width: 13rem;
+  height: 2rem;
+  font-size: 1.55rem;
+  border-width: 0.15rem;
+  border-color: #cccccc;
+  background-color: #ffffff;
+  color: #000000;
+  border-style: solid;
+}
 
-  .button-look {
-    color: white;
-    font-size: 1.25rem;
-    font-family: inherit;
-    padding: 0.6rem 3.75rem;
-    margin: 0.65rem 0.65rem;
-    cursor: pointer;
-    text-align: center;
-    border: #474747 0.1rem solid;
-  }
+.button-look {
+  color: white;
+  font-size: 1.25rem;
+  font-family: inherit;
+  padding: 0.6rem 3.75rem;
+  margin: 0.65rem 0.65rem;
+  cursor: pointer;
+  text-align: center;
+  border: #474747 0.1rem solid;
+}
 
-  /* positioning of inputs*/
-  .text-up {
-    position: relative;
-    font-size: 3rem;
-    color: #000000;
-    top: 1.5rem;
-    text-align: center;
-  }
+/* positioning of inputs*/
+.text-up {
+  position: relative;
+  font-size: 3rem;
+  color: #000000;
+  top: 1.5rem;
+  margin-top: -1.5rem;
+  text-align: center;
+}
 
-  .barrier-input,
-  .armor-input,
-  .hp-input,
-  .damage-input,
-  .resist-input,
-  .heal-input,
-  .mana-input {
-    position: relative;
-  }
+.barrier-input,
+.armor-input,
+.hp-input,
+.damage-input,
+.resist-input,
+.heal-input,
+.mana-input {
+  position: relative;
+}
 
-  .barrier-container {
-    position: absolute;
-    right: 10%;
-    top: 26%;
-    transform: translate(-50%, -50%);
-  }
+.barrier-armor-hp-mana-container {
+  position: absolute;
+  right: 15%;
+  top: 20.5%;
+  display: flex;
+  flex-direction: column;
+}
 
-  .armor-container {
-    position: absolute;
-    right: 10%;
-    top: 39%;
-    transform: translate(-50%, -50%);
-  }
+.damage-res-heal-container {
+  position: absolute;
+  top: 24.5%;
+  left: 15%;
+}
 
-  .hp-container {
-    position: absolute;
-    right: 10%;
-    top: 52%;
-    transform: translate(-50%, -50%);
-  }
+/* all those little squares on bottom */
+.additional-damage {
+  width: 3.5rem;
+  height: 3.5rem;
+  font-size: 2rem;
+  text-align: center;
+}
 
-  .mana-container {
-    position: absolute;
-    right: 10%;
-    top: 65%;
-    transform: translate(-50%, -50%);
-  }
+.burn-container,
+.cold-container,
+.poison-container,
+.bleed-container,
+.void-container {
+  position: absolute;
+  bottom: 2%;
+  transform: translate(-50%, -50%);
+}
 
-  .damage-container {
-    position: absolute;
-    top: 33.5%;
-    left: 21.8%;
-    transform: translate(-50%, -50%);
-  }
+.burn-container-resist,
+.cold-container-resist,
+.poison-container-resist,
+.bleed-container-resist,
+.void-container-resist {
+  position: absolute;
+  bottom: 2%;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  transform: translate(-50%, -50%);
+}
 
-  .resist-container-damage {
-    position: absolute;
-    top: 46.5%;
-    left: 21.8%;
-    transform: translate(-50%, -50%);
-  }
+:root {
+  --offset: 4.2%;
+  --burn: 30%;
+  --cold: 40%;
+  --poison: 50%;
+  --bleed: 60%;
+  --void: 70%;
+}
 
-  .heal-container {
-    position: absolute;
-    top: 59.5%;
-    left: 21.8%;
-    transform: translate(-50%, -50%);
-  }
+/* burn damage */
 
-  /* all those little squares on bottom */
-  .additional-damage {
-    width: 3.5rem;
-    height: 3.5rem;
-    font-size: 2rem;
-    text-align: center;
-  }
+.burn-container {
+  left: var(--burn);
+}
 
-  /* burn damage */
-  .burn-container {
-    position: absolute;
-    bottom: 2%;
-    left: 30%;
-    transform: translate(-50%, -50%);
-  }
+.burn-container-resist {
+  left: calc(var(--burn) + var(--offset));
+}
 
-  .burn-container-resist {
-    position: absolute;
-    bottom: 2%;
-    left: 34.2%;
-    transform: translate(-50%, -50%);
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
-  }
+/* cold damage */
+.cold-container {
+  left: var(--cold);
+}
+.cold-container-resist {
+  left: calc(var(--cold) + var(--offset));
+}
 
-  /* cold damage */
-  .cold-container {
-    position: absolute;
-    bottom: 2%;
-    left: 40%;
-    transform: translate(-50%, -50%);
-  }
-  .cold-container-resist {
-    position: absolute;
-    bottom: 2%;
-    left: 44.2%;
-    transform: translate(-50%, -50%);
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
-  }
+/* poison damage */
+.poison-container {
+  left: var(--poison);
+}
+.poison-container-resist {
+  left: calc(var(--poison) + var(--offset));
+}
 
-  /* poison damage */
-  .poison-container {
-    position: absolute;
-    bottom: 2%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-  .poison-container-resist {
-    position: absolute;
-    bottom: 2%;
-    left: 54.2%;
-    transform: translate(-50%, -50%);
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
-  }
+/* bleed damage */
+.bleed-container {
+  left: var(--bleed);
+}
+.bleed-container-resist {
+  left: calc(var(--bleed) + var(--offset));
+}
 
-  /* bleed damage */
-  .bleed-container {
-    position: absolute;
-    bottom: 2%;
-    left: 60%;
-    transform: translate(-50%, -50%);
-  }
-  .bleed-container-resist {
-    position: absolute;
-    bottom: 2%;
-    left: 64.2%;
-    transform: translate(-50%, -50%);
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
-  }
+/* void damage */
+.void-container {
+  left: var(--void);
+}
 
-  /* void damage */
-  .void-container {
-    position: absolute;
-    bottom: 2%;
-    left: 70%;
-    transform: translate(-50%, -50%);
+.void-container-resist {
+  left: calc(var(--void) + var(--offset));
+}
+
+.burn-container-resist.show,
+.cold-container-resist.show,
+.poison-container-resist.show,
+.bleed-container-resist.show,
+.void-container-resist.show {
+  opacity: 1;
+}
+/* --------------------------------------------- */
+/* buttons that show up */
+
+.buttons-up-div {
+  position: absolute;
+  top: 12%;
+  left: 50%;
+}
+
+.barier-button,
+.armor-button,
+.hp-button,
+.mana-button {
+  transform: translate(-50%, -50%);
+  color: #ffffff;
+  top: 4rem;
+  width: 2rem;
+  height: 1rem;
+  position: absolute;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-size: 400% 400%;
+  animation: gradient 10s ease infinite;
+}
+
+.barier-button {
+  right: 1rem;
+
+  background-image: linear-gradient(-45deg, #78d2af, #009f84, #45c65c, #01aebd, #ffee36);
+}
+
+.armor-button {
+  top: 4rem;
+
+  background-image: linear-gradient(-45deg, #cacaca, #838383, #656565, #757575, #d2d2d2);
+}
+
+.hp-button {
+  top: 4rem;
+  left: 12rem;
+
+  background-image: linear-gradient(-45deg, #ff1b1b, #c70000, #ff2121, #b70000, #ff2121);
+}
+
+.mana-button {
+  top: 0rem;
+  width: 26rem;
+
+  background-image: linear-gradient(-45deg, #00e1ff, #0095c7, #2164ff, #0debff, #00b2fe);
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
   }
-
-  .void-container-resist {
-    position: absolute;
-    bottom: 2%;
-    left: 74.2%;
-    transform: translate(-50%, -50%);
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
+  50% {
+    background-position: 100% 50%;
   }
-
-  .burn-container-resist.show,
-  .cold-container-resist.show,
-  .poison-container-resist.show,
-  .bleed-container-resist.show,
-  .void-container-resist.show {
-    opacity: 1;
-  }
-  /* --------------------------------------------- */
-  /* buttons that show up */
-  .barier-button {
-    position: absolute;
-    top: 18%;
-    left: 39.5%;
-    transform: translate(-50%, -50%);
-    color: #ffffff;
-    width: 2rem;
-    height: 1rem;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    background-image: linear-gradient(-45deg, #78d2af, #009f84, #45c65c, #01aebd, #ffee36);
-
-    background-size: 400% 400%;
-    animation: gradient 10s ease infinite;
-  }
-
-  .armor-button {
-    position: absolute;
-    top: 18%;
-    left: 49.5%;
-    transform: translate(-50%, -50%);
-    color: #ffffff;
-    width: 2rem;
-    height: 1rem;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    background-image: linear-gradient(-45deg, #cacaca, #838383, #656565, #757575, #d2d2d2);
-    background-size: 400% 400%;
-    animation: gradient 10s ease infinite;
-  }
-
-  .hp-button {
-    position: absolute;
-    top: 18%;
-    left: 59.5%;
-    transform: translate(-50%, -50%);
-    color: #ffffff;
-    width: 2rem;
-    height: 1rem;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    background-image: linear-gradient(-45deg, #ff1b1b, #c70000, #ff2121, #b70000, #ff2121);
-    background-size: 400% 400%;
-    animation: gradient 10s ease infinite;
-  }
-
-  .mana-button {
-    background-color: rgb(163, 0, 0);
-    position: absolute;
-    top: 11%;
-    left: 49.5%;
-    width: 26rem;
-    height: 1rem;
-    transform: translate(-50%, -50%);
-    color: #ffffff;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    background-image: linear-gradient(-45deg, #00e1ff, #0095c7, #2164ff, #0debff, #00b2fe);
-
-    background-size: 400% 400%;
-    animation: gradient 10s ease infinite;
-  }
-
-  @keyframes gradient {
-    0% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
-    }
-  }
-
-  .reset-button-all {
-    background-color: rgb(0, 0, 0);
-    padding: 0.6rem 0.05rem;
-    width: 13rem;
-    height: 2.5rem;
-  }
-  .reset-button-all-disclaimer {
-    color: #a9a9a9;
-    font-size: 0.7rem;
-  }
-
-  .reset-button-damage {
-    background-color: rgb(0, 0, 0);
-    padding: 0.6rem 0.05rem;
-    width: 13rem;
-    height: 2.5rem;
-  }
-  .reset-position {
-    position: absolute;
-    top: 15%;
-    left: 6%;
-    transform: translate(-50%, -50%);
-    display: flex;
-    flex-direction: column;
-  }
-
-  /* list of all damages */
-  .list-group-item {
-    border-bottom: 0.1rem solid rgb(0, 0, 0);
-    list-style: none;
-    display: block;
-    font-size: 1.2rem;
-  }
-
-  .list-group {
-    position: absolute;
-    text-align: center;
-    background-color: black;
-    color: white;
-    top: 50%;
-    left: 35%;
-    transform: translate(-50%, -50%);
-    list-style: none;
-    width: 12rem;
-    /* overflow hide if something is out of the box  */
-    overflow: hidden;
-    overflow: scroll;
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
-  }
-
-  .list-group.left li {
-    background-color: #000000;
-    color: white;
-    padding: 0.1rem;
-    bottom: 0.5rem;
-  }
-
-  .list-group.left {
-    padding-top: 2rem;
-    padding-bottom: 1rem;
-    height: 17rem;
-    top: 1.5rem;
-  }
-  .list-group.right {
-    height: 20rem;
-    top: 3rem;
-    border-radius: 0;
-  }
-
-  .full-damage-list-div {
-    top: 45.5%;
-    left: 36%;
-    position: absolute;
-    transform: translate(-50%, -50%);
-  }
-
-  .history-damage-list-div {
-    top: 45.5%;
-    left: 64%;
-    position: absolute;
-    transform: translate(-50%, -50%);
-  }
-
-  /* hide scrollbar but keep functionality */
-  .list-group::-webkit-scrollbar {
-    display: none;
-  }
-
-  .full-damage-text-up {
-    font-size: 2rem;
-    text-align: center;
-    border-bottom: #646464 0.15rem solid;
-    position: absolute;
-    text-align: center;
-    background-color: black;
-    color: white;
-    bottom: 6rem;
-    left: -6rem;
-    list-style: none;
-    width: 12rem;
-    z-index: 1;
-  }
-
-  .button-list-damage {
-    pointer-events: none;
-    cursor: default;
-    background-color: #000000;
-    position: absolute;
-    width: 4.5rem;
-    top: 10.6rem;
-    left: -0.65rem;
-    border: none;
-    border-top: #646464 0.15rem solid;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden; /* hide any overflow */
-    text-overflow: ellipsis; /* add an ellipsis (...) to indicate truncated text */
-    white-space: nowrap; /* prevent text from wrapping */
-    overflow: scroll;
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
-  }
-
-  .button-list-damage::-webkit-scrollbar {
-    display: none;
-  }
-
-  /* dice */
-
-  .div-dice-roll {
-    position: absolute;
-    border: #000000 0.5rem solid;
-    left: 50%;
-    top: 42.3%;
-    display: flex;
-    flex-direction: column;
-    transform: translate(-50%, -50%);
-  }
-
-  .number-dice-roll {
-    background-color: rgb(213, 113, 0);
-    color: #000000;
-    font-size: 10rem;
-    height: 12rem;
-    width: 17rem;
-    padding: 0rem;
-    margin: 0rem;
-    text-align: center;
-  }
-
-  .input-look.trial {
-    width: 8rem;
-    flex: 1;
-    height: auto;
-  }
-
-  .previous-number {
-    background-color: #6d8f8e;
-    text-align: center;
-    font-size: 1.5rem;
-    border: none;
-    flex: 1;
-    pointer-events: none;
-    cursor: default;
-  }
-
-  .previous-and-input-div {
-    display: flex;
-    width: 17.05rem;
-    height: 3rem;
-  }
-
-  .number-dice-roll.sins {
-    top: 16rem;
-    height: 6rem;
-    width: 7.5rem;
-    font-size: 2rem;
-    position: absolute;
-  }
-  .number-dice-roll.half {
-    top: 16rem;
-    left: 9rem;
-    height: 6rem;
-    width: 7.5rem;
-    font-size: 2.5rem;
-    position: absolute;
-  }
-  /* button choise */
-
-  .buttons-choise-div {
-    position: absolute;
-    top: 30%;
-    left: 1.5%;
-  }
-
-  .buttons-choise-look {
-    border-color: #1e1e1e;
-    background-color: #222222;
-    opacity: 0.8;
-    background-image: linear-gradient(
-        30deg,
-        #404040 12%,
-        transparent 12.5%,
-        transparent 87%,
-        #404040 87.5%,
-        #404040
-      ),
-      linear-gradient(
-        150deg,
-        #404040 12%,
-        transparent 12.5%,
-        transparent 87%,
-        #404040 87.5%,
-        #404040
-      ),
-      linear-gradient(
-        30deg,
-        #404040 12%,
-        transparent 12.5%,
-        transparent 87%,
-        #404040 87.5%,
-        #404040
-      ),
-      linear-gradient(
-        150deg,
-        #404040 12%,
-        transparent 12.5%,
-        transparent 87%,
-        #404040 87.5%,
-        #404040
-      ),
-      linear-gradient(
-        60deg,
-        #40404077 25%,
-        transparent 25.5%,
-        transparent 75%,
-        #40404077 75%,
-        #40404077
-      ),
-      linear-gradient(
-        60deg,
-        #40404077 25%,
-        transparent 25.5%,
-        transparent 75%,
-        #40404077 75%,
-        #40404077
-      );
-    background-size: 20px 35px;
-    background-position: 0 0, 0 0, 10px 18px, 10px 18px, 0 0, 10px 18px;
-    color: #ffffff;
-    font-size: 3rem;
-    height: 4rem;
-    width: 5rem;
-    text-align: center;
-  }
-  .buttons-choise-look.hundred {
-    width: 10.25rem;
+  100% {
+    background-position: 0% 50%;
   }
 }
+
+/* reset buttons */
+.reset-button-all,
+.reset-button-damage {
+  background-color: rgb(0, 0, 0);
+  padding: 0.6rem 0.05rem;
+  width: 13rem;
+  height: 2.5rem;
+}
+.reset-button-all-disclaimer {
+  color: #a9a9a9;
+  font-size: 0.7rem;
+}
+
+.reset-position {
+  position: absolute;
+  top: 15%;
+  left: 6%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+}
+
+/* list of all damages */
+.list-group-item {
+  border-bottom: 0.1rem solid rgb(0, 0, 0);
+  list-style: none;
+  display: block;
+  font-size: 1.2rem;
+}
+
+.list-group {
+  position: absolute;
+  text-align: center;
+  background-color: black;
+  color: white;
+  top: 50%;
+  left: 35%;
+  transform: translate(-50%, -50%);
+  list-style: none;
+  width: 12rem;
+  /* overflow hide if something is out of the box  */
+  overflow: hidden;
+  overflow: scroll;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.list-group.left li {
+  background-color: #000000;
+  color: white;
+  padding: 0.1rem;
+  bottom: 0.5rem;
+}
+
+.list-group.left {
+  padding-top: 2rem;
+  padding-bottom: 1rem;
+  height: 17rem;
+  top: 1.5rem;
+}
+.list-group.right {
+  height: 20rem;
+  top: 3rem;
+  border-radius: 0;
+}
+
+.full-damage-list-div {
+  top: 45.5%;
+  left: 36%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+}
+
+.history-damage-list-div {
+  top: 45.5%;
+  left: 64%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+}
+
+/* hide scrollbar but keep functionality */
+.list-group::-webkit-scrollbar {
+  display: none;
+}
+
+.full-damage-text-up {
+  font-size: 2rem;
+  text-align: center;
+  border-bottom: #646464 0.15rem solid;
+  position: absolute;
+  text-align: center;
+  background-color: black;
+  color: white;
+  bottom: 6rem;
+  left: -6rem;
+  list-style: none;
+  width: 12rem;
+  z-index: 1;
+}
+
+.button-list-damage {
+  pointer-events: none;
+  cursor: default;
+  background-color: #000000;
+  position: absolute;
+  width: 4.5rem;
+  top: 10.6rem;
+  left: -0.65rem;
+  border: none;
+  border-top: #646464 0.15rem solid;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden; /* hide any overflow */
+  text-overflow: ellipsis; /* add an ellipsis (...) to indicate truncated text */
+  white-space: nowrap; /* prevent text from wrapping */
+  overflow: scroll;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.button-list-damage::-webkit-scrollbar {
+  display: none;
+}
+
+/* dice */
+
+.roll-dice-equation {
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.5rem;
+  pointer-events: none;
+}
+
+.div-dice-roll {
+  position: absolute;
+  border: #000000 0.5rem solid;
+  left: 50%;
+  top: 42%;
+  display: flex;
+  flex-direction: column;
+  transform: translate(-50%, -50%);
+}
+
+.number-dice-roll {
+  background-color: rgb(213, 113, 0);
+  color: #000000;
+  font-size: 10rem;
+  height: 12rem;
+  width: 17rem;
+  padding: 0rem;
+  margin: 0rem;
+  text-align: center;
+}
+
+.input-look.trial {
+  width: 8rem;
+  flex: 1;
+  height: auto;
+}
+
+.previous-number {
+  background-color: #6d8f8e;
+  text-align: center;
+  font-size: 1.5rem;
+  border: none;
+  flex: 1;
+  pointer-events: none;
+  cursor: default;
+}
+
+.previous-and-input-div {
+  display: flex;
+  width: 17.05rem;
+  height: 3rem;
+}
+
+.number-dice-roll.sins {
+  top: 16rem;
+  height: 6rem;
+  width: 7.5rem;
+  font-size: 2rem;
+  position: absolute;
+}
+.number-dice-roll.half {
+  top: 16rem;
+  left: 9rem;
+  height: 6rem;
+  width: 7.5rem;
+  font-size: 2.5rem;
+  position: absolute;
+}
+/* button choise */
+
+.buttons-choise-div {
+  position: absolute;
+  top: 28%;
+  left: 1.5%;
+}
+
+.buttons-choise-look {
+  border-color: #1e1e1e;
+  background-color: #222222;
+  opacity: 0.8;
+  background-image: linear-gradient(
+      30deg,
+      #404040 12%,
+      transparent 12.5%,
+      transparent 87%,
+      #404040 87.5%,
+      #404040
+    ),
+    linear-gradient(150deg, #404040 12%, transparent 12.5%, transparent 87%, #404040 87.5%, #404040),
+    linear-gradient(30deg, #404040 12%, transparent 12.5%, transparent 87%, #404040 87.5%, #404040),
+    linear-gradient(150deg, #404040 12%, transparent 12.5%, transparent 87%, #404040 87.5%, #404040),
+    linear-gradient(
+      60deg,
+      #40404077 25%,
+      transparent 25.5%,
+      transparent 75%,
+      #40404077 75%,
+      #40404077
+    ),
+    linear-gradient(
+      60deg,
+      #40404077 25%,
+      transparent 25.5%,
+      transparent 75%,
+      #40404077 75%,
+      #40404077
+    );
+  background-size: 20px 35px;
+  background-position: 0 0, 0 0, 10px 18px, 10px 18px, 0 0, 10px 18px;
+  color: #ffffff;
+  font-size: 3rem;
+  height: 4rem;
+  width: 5rem;
+  text-align: center;
+}
+.buttons-choise-look.hundred {
+  width: 10.25rem;
+}
+
+/* } */
