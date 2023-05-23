@@ -6,9 +6,11 @@ import NavbarSide from './allRes/Navbar/Navbar';
 
 import CalcDMG from './allRes/calcDamage/calcDamage';
 import Heal from './allRes/calcHeal/Heal';
+import HealMobile from './allRes/calcHeal/HealMobile';
 import RunesLvL from './allRes/calcRunes/Runes';
 
 import './allRes/calcHeal/HealCSS/Heal.css';
+import './allRes/calcHeal/HealCSS/Heal-mobileM.css';
 import './allRes/calcDamage/DamageCSS/DamageCss.css';
 import './allRes/calcDamage/DamageCSS/DamageCss-Mobile.css';
 import './allRes/calcDamage/DamageCSS/DamageCss-Laptop.css';
@@ -23,6 +25,7 @@ function App() {
           <Route path="*" element={<CalcDMG />} />
           <Route path="/damage" element={<CalcDMG />} />
           <Route path="/heal" element={<Heal />} />
+          <Route path="/healMobile" element={<HealMobile />} />
           <Route path="/runes" element={<RunesLvL />} />
         </Routes>
       </div>

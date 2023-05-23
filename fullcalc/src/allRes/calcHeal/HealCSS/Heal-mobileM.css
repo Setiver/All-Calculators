@@ -1,85 +1,4 @@
-@media (min-width: 0px) and (max-width: 1100px) {
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: inherit;
-  }
-
-  body {
-    width: 100%;
-    height: 100%;
-    font-family: 'Raleway', Helvetica, Arial, sans-serif;
-    background-image: url('../../img/background1.png');
-  }
-
-  /* nice input checkbox look */
-  .control {
-    font-family: arial;
-    display: block;
-    position: relative;
-    text-align: center;
-    left: 40%;
-    padding-left: 30px;
-    margin-bottom: 5px;
-    padding-top: 3px;
-    cursor: pointer;
-    font-size: 16px;
-  }
-  .control input {
-    position: absolute;
-    z-index: -1;
-    opacity: 0;
-  }
-  .control_indicator {
-    position: absolute;
-    top: 2px;
-    left: 0;
-    height: 20px;
-    width: 20px;
-    background: #e6e6e6;
-    border: 0px solid #000000;
-    border-radius: 0px;
-  }
-  .control:hover input ~ .control_indicator,
-  .control input:focus ~ .control_indicator {
-    background: #cccccc;
-  }
-
-  .control input:checked ~ .control_indicator {
-    background: #2aa1c0;
-  }
-  .control:hover input:not([disabled]):checked ~ .control_indicator,
-  .control input:checked:focus ~ .control_indicator {
-    background: #0e6647;
-  }
-  .control input:disabled ~ .control_indicator {
-    background: #e6e6e6;
-    opacity: 0.6;
-    pointer-events: none;
-  }
-  .control_indicator:after {
-    box-sizing: unset;
-    content: '';
-    position: absolute;
-    display: none;
-  }
-  .control input:checked ~ .control_indicator:after {
-    display: block;
-  }
-  .control-checkbox .control_indicator:after {
-    left: 8px;
-    top: 4px;
-    width: 3px;
-    height: 8px;
-    border: solid #ffffff;
-    border-width: 0 2px 2px 0;
-    transform: rotate(45deg);
-  }
-  .control-checkbox input:disabled ~ .control_indicator:after {
-    border-color: #7b7b7b;
-  }
-  /* ------------------------------------------------------ */
-
+@media (min-width: 0px) and (max-width: 1919px) {
   .button-shower {
     background-color: rgb(40, 41, 42);
     border-radius: 1rem;
@@ -104,63 +23,43 @@
   }
 
   .table {
-    max-width: 31rem;
+    max-width: 26rem;
     table-layout: fixed;
     position: absolute;
     text-align-last: center;
   }
-
-  .table-wounds {
-    top: 200%;
-  }
-
-  .button-shower.wounds {
-    top: 5%;
-  }
-
-  .table-burns {
-    top: 400%;
-  }
-
-  .button-shower.burns {
-    top: 20%;
-  }
-
-  .table-breaks {
-    top: 200%;
-    left: 61%;
-  }
-  .button-shower.breaks {
-    top: 35%;
-  }
-
-  .table-diseases {
-    left: 61%;
-    top: 570.5%;
-  }
-  .button-shower.diseases {
-    top: 50%;
-  }
-
-  .table-lossof {
-    top: 200%;
-    left: 34%;
-  }
-  .button-shower.lossof {
-    top: 65%;
-  }
   .table {
     left: 0%;
-    top: 10%;
+    top: 21%;
     z-index: 1;
   }
 
+  .button-shower.wounds {
+    top: 15%;
+  }
+
+  .button-shower.burns {
+    top: 30%;
+  }
+
+  .button-shower.breaks {
+    top: 45%;
+  }
+
+  .button-shower.diseases {
+    top: 60%;
+  }
+
+  .button-shower.lossof {
+    top: 75%;
+  }
+
   .button-shower.summary {
-    top: 80%;
+    top: 90%;
   }
 
   .button-shower.close {
-    top: 5%;
+    top: 15%;
 
     z-index: 2;
     color: black;
@@ -169,47 +68,5 @@
 
   .button-shower:hover {
     background-color: #5cbf2a;
-  }
-  /* to click outside of summary */
-  .blur *:not(.no-blur) {
-    filter: blur(0.3rem);
-    animation: fadeout 0.3s ease-in-out forwards;
-  }
-
-  @keyframes fadeout {
-    from {
-      opacity: 1;
-    }
-    to {
-      opacity: 0.99;
-    }
-  }
-
-  .blur-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: none;
-  }
-
-  .blur-overlay.visible {
-    display: block;
-    pointer-events: none;
-  }
-
-  .blocker {
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    background-color: transparent;
-    z-index: 999;
-  }
-
-  .blocker.visible {
-    pointer-events: all;
   }
 }

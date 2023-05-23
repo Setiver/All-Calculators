@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { isMobile } from 'react-device-detect';
 
 const NavbarSide = () => {
   return (
@@ -35,11 +36,19 @@ const NavbarSide = () => {
                   Damage
                 </Link>
               </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/heal">
-                  Heal
-                </Link>
-              </li>
+              {isMobile ? (
+                <li className="nav-item">
+                  <Link className="nav-link" to="/healMobile">
+                    Heal for Moblie
+                  </Link>
+                </li>
+              ) : (
+                <li className="nav-item">
+                  <Link className="nav-link" to="/heal">
+                    Heal
+                  </Link>
+                </li>
+              )}
               <li className="nav-item">
                 <Link className="nav-link" to="/runes">
                   Runes
