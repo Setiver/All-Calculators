@@ -448,7 +448,7 @@ const CalcDMG = () => {
         {/* -----------------LeftSideInputs----------------- */}
         {/* -----------------Damage----------------- */}
         <div className="damage-res-heal-container">
-          <p className="text-up">Damage</p>
+          <p className="text-up text-damage">Damage</p>
           <input
             type="number"
             className="damage-input input-look"
@@ -457,7 +457,7 @@ const CalcDMG = () => {
             value={damageValue > 0 ? damageValue : ''}
           />
           {/* -----------------ResistanceDamage----------------- */}
-          <p className="text-up">Resist.%</p>
+          <p className="text-up text-resist">Resist.%</p>
           <input
             type="number"
             className="resist-input input-look"
@@ -466,7 +466,7 @@ const CalcDMG = () => {
             value={resistValueDamage !== 0 && resistValueDamage <= 100 ? resistValueDamage : ''}
           />
           {/* -----------------Heal----------------- */}
-          <p className="text-up">Heal</p>
+          <p className="text-up text-heal">Heal</p>
           <input
             type="number"
             className="heal-input input-look"

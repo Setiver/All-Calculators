@@ -50,7 +50,11 @@
   .heal-input {
     width: 10rem;
   }
-
+  .text-damage,
+  .text-resist,
+  .text-heal {
+    top: 2rem;
+  }
   /* all those little squares on bottom */
 
   .text-up.emoji {

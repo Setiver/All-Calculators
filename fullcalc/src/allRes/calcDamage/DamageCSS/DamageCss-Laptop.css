@@ -2,7 +2,7 @@
   /* input look */
   .input-look {
     padding: 0.3rem;
-    width: 4.2rem;
+    width: 8rem;
     height: 1.5rem;
     font-size: 1.5rem;
   }
@@ -15,41 +15,48 @@
 
   /* positioning of inputs*/
   .text-up {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
   }
 
   .barrier-armor-hp-mana-container {
     right: 0;
-    left: 50%;
-    top: 8%;
+    left: 66%;
+    top: 23%;
     display: grid;
-    grid-template-columns: 5.5rem 5.5rem;
+    grid-template-columns: 5.5rem;
     gap: 0.2rem;
   }
 
   .damage-res-heal-container {
-    top: 28%;
-    left: 50%;
+    top: 25%;
+    left: 16.5%;
     display: grid;
-    gap: 0.75rem;
+    gap: 0.5rem;
+  }
+
+  .text-damage,
+  .text-resist,
+  .text-heal {
+    top: 1.8rem;
   }
 
   .damage-input,
   .resist-input,
   .heal-input {
-    width: 10rem;
+    width: 8rem;
   }
 
   /* all those little squares on bottom */
 
   .text-up.emoji {
     top: 1rem;
+    font-size: 2rem;
   }
 
   .additional-damage {
-    width: 1.5rem;
-    height: 1.5rem;
-    font-size: 1rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 2rem;
   }
 
   .burn-container,
@@ -57,7 +64,7 @@
   .poison-container,
   .bleed-container,
   .void-container {
-    bottom: -5%;
+    bottom: 0%;
   }
 
   .burn-container-resist,
@@ -65,16 +72,16 @@
   .poison-container-resist,
   .bleed-container-resist,
   .void-container-resist {
-    bottom: -16%;
+    bottom: 0%;
   }
 
   :root {
-    --offset: 0%;
-    --burn: 20%;
-    --cold: 35%;
-    --poison: 50%;
-    --bleed: 65%;
-    --void: 80%;
+    --offset: 6%;
+    --burn: 24%;
+    --cold: 36%;
+    --poison: 48%;
+    --bleed: 60%;
+    --void: 72%;
   }
 
   /* burn damage */
@@ -124,7 +131,7 @@
   /* buttons that show up */
 
   .buttons-up-div {
-    top: 74%;
+    top: 15%;
     left: 47%;
   }
 
@@ -155,7 +162,7 @@
   /* reset buttons */
   .reset-position {
     top: 18%;
-    left: 24%;
+    left: 8%;
   }
 
   .reset-button-all,
@@ -190,19 +197,19 @@
     top: 1.5rem;
   }
   .list-group.right {
-    height: 5rem;
-    top: -2rem;
+    height: 14.35rem;
+    top: 2.6rem;
     border-radius: 0;
   }
 
   .full-damage-list-div {
     top: 43.5%;
-    left: 24%;
+    left: 40%;
   }
 
   .history-damage-list-div {
-    top: 160%;
-    left: 30%;
+    top: 43.5%;
+    left: 56%;
   }
 
   .full-damage-text-up {
@@ -221,8 +228,8 @@
 
   /* dice */
   .div-dice-roll {
-    left: 30%;
-    top: 130%;
+    left: 10%;
+    top: 80%;
     width: 10rem;
   }
 
@@ -275,8 +282,8 @@
 
   .buttons-choise-div {
     position: absolute;
-    top: 116.8%;
-    left: 60%;
+    top: 30%;
+    left: 2%;
   }
 
   .buttons-choise-look {
