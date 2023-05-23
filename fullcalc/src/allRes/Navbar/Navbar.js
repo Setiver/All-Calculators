@@ -49,11 +49,15 @@ const NavbarSide = () => {
                   </Link>
                 </li>
               )}
-              <li className="nav-item">
-                <Link className="nav-link" to="/runes">
-                  Runes
-                </Link>
-              </li>
+              {isMobile ? (
+                ''
+              ) : (
+                <li className="nav-item">
+                  <Link className="nav-link" to="/runes">
+                    Runes
+                  </Link>
+                </li>
+              )}
             </ul>
           </div>
         </div>

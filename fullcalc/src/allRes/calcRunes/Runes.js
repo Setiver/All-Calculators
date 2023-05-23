@@ -28,18 +28,14 @@ const RunesLvL = () => {
   }
 
   // -------------------------------------------- //
-  function Lista(props) {
-    const { items, name, moneyArray, classes } = props;
-
+  function Lista({ items, name, moneyArray, classes }) {
     const itemsOptions = items.map((obj, index) => (
       <div key={index}>
         <button
           className={`buttons-styles`}
           key={index}
           value={moneyArray[index]}
-          onClick={event => {
-            handleButtonClick(event);
-          }}>
+          onClick={event => handleButtonClick(event)}>
           {obj}
         </button>
       </div>
