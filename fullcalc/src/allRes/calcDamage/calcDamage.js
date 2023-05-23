@@ -411,49 +411,37 @@ const CalcDMG = () => {
         {/* -----------------ButtonsUP----------------- */}
         <div className="buttons-up-div">
           {/* -----------------Barrier----------------- */}
-          {buttonValueBarier >= 0 ? (
-            <button
-              className="button-look barier-button"
-              value={buttonValueBarier}
-              onClick={damageOnClick}>
-              {buttonValueBarier}
-            </button>
-          ) : (
-            ''
-          )}
+
+          <button
+            className="button-look barier-button"
+            value={buttonValueBarier}
+            onClick={damageOnClick}>
+            {buttonValueBarier <= -1000 ? 'XD' : buttonValueBarier}
+          </button>
 
           {/* -----------------Armor----------------- */}
-          {buttonValueArmor >= 0 ? (
-            <button
-              className="button-look armor-button"
-              value={buttonValueArmor}
-              onClick={damageOnClick}>
-              {buttonValueArmor}
-            </button>
-          ) : (
-            ''
-          )}
+
+          <button
+            className="button-look armor-button"
+            value={buttonValueArmor}
+            onClick={damageOnClick}>
+            {buttonValueArmor <= -1000 ? 'XD' : buttonValueArmor}
+          </button>
 
           {/* -----------------HP----------------- */}
-          {buttonValueHP >= 0 ? (
-            <button className="button-look hp-button" value={buttonValueHP} onClick={damageOnClick}>
-              {buttonValueHP}
-            </button>
-          ) : (
-            ''
-          )}
+
+          <button className="button-look hp-button" value={buttonValueHP} onClick={damageOnClick}>
+            {buttonValueHP <= -1000 ? 'XD' : buttonValueHP}
+          </button>
 
           {/* -----------------Mana----------------- */}
-          {buttonValueMana >= 0 ? (
-            <button
-              className="button-look mana-button"
-              value={buttonValueMana}
-              onClick={() => setButtonValueMana(buttonValueMana - 1)}>
-              {buttonValueMana}
-            </button>
-          ) : (
-            ''
-          )}
+
+          <button
+            className="button-look mana-button"
+            value={buttonValueMana}
+            onClick={() => setButtonValueMana(buttonValueMana - 1)}>
+            {buttonValueMana}
+          </button>
         </div>
 
         {/* ---------------------------------------------------- */}
