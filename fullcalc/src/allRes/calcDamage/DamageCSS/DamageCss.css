@@ -78,7 +78,7 @@ input[type='number'] {
 
 .damage-res-heal-container {
   position: absolute;
-  top: 24.5%;
+  top: 25%;
   left: 15%;
 }
 
@@ -194,45 +194,78 @@ input[type='number'] {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-size: 400% 400%;
-  animation: gradient 10s ease infinite;
+  background-size: 600% 100%;
+  animation: gradient 10s linear infinite;
 }
 
 .barier-button {
   right: 1rem;
 
-  background-image: linear-gradient(-45deg, #78d2af, #009f84, #45c65c, #01aebd, #ffee36);
+  background-image: linear-gradient(
+    90deg,
+    #78d2af,
+    #009f84,
+    #45c65c,
+    #01aebd,
+    #c0ff38,
+    #78d2af,
+    #009f84
+  );
 }
 
 .armor-button {
   top: 4rem;
 
-  background-image: linear-gradient(-45deg, #cacaca, #838383, #656565, #757575, #d2d2d2);
+  background-image: linear-gradient(
+    90deg,
+    #cacaca,
+    #838383,
+    #656565,
+    #757575,
+    #d2d2d2,
+    #cacaca,
+    #838383
+  );
 }
 
 .hp-button {
   top: 4rem;
   left: 12rem;
 
-  background-image: linear-gradient(-45deg, #ff1b1b, #c70000, #ff2121, #b70000, #ff2121);
+  background-image: linear-gradient(
+    90deg,
+    #ff1b1b,
+    #c70000,
+    #ff2121,
+    #b70000,
+    #ff2121,
+    #ff1b1b,
+    #c70000
+  );
 }
 
 .mana-button {
   top: 0rem;
   width: 26rem;
 
-  background-image: linear-gradient(-45deg, #00e1ff, #0095c7, #2164ff, #0debff, #00b2fe);
+  background-image: linear-gradient(
+    90deg,
+    #00e1ff,
+    #0095c7,
+    #2164ff,
+    #0debff,
+    #00b2fe,
+    #00e1ff,
+    #0095c7
+  );
 }
 
 @keyframes gradient {
   0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
+    background-position: 0% 0%;
   }
   100% {
-    background-position: 0% 50%;
+    background-position: 100% 0%;
   }
 }
 
