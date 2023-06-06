@@ -1,4 +1,9 @@
 import { useState, useEffect, useRef } from 'react';
+import DamageList from '../img/damage.png';
+import HistoryList from '../img/history.png';
+import Dice4 from '../img/dice4.png';
+import Dice6 from '../img/dice6.png';
+import Dice8 from '../img/dice8.png';
 
 const CalcDMG = () => {
   // ---------------------------------- //
@@ -478,7 +483,8 @@ const CalcDMG = () => {
         {/* ---------------------------------------------------- */}
         {/* -----------------DamageList----------------- */}
         <div className="full-damage-list-div">
-          <p className="full-damage-text-up">DAMAGE</p>
+          <img src={DamageList} alt="damage" className="damage-list-png" />
+          {/* <p className="full-damage-text-up">DAMAGE</p> */}
           <ul className="list-group left">
             {damageValue > 0 ? <li className="list-group-item">⚔ Damage: {damageValue}</li> : ''}
             {resistValueDamage !== 0 && resistValueDamage !== '' && resistValueDamage <= 100 ? (
@@ -560,7 +566,7 @@ const CalcDMG = () => {
         </div>
         {/* -----------------HostoryDamageList----------------- */}
         <div className="history-damage-list-div">
-          <p className="full-damage-text-up">HISTORY</p>
+          <img src={HistoryList} alt="history" className="history-list-png" />
           <ul className="list-group right">
             <li></li>
             <HistoryHandler type={'Barrier'} holder={historyHolderBarrier} />
@@ -739,17 +745,11 @@ const CalcDMG = () => {
         {/* -----------------ButtonsOnLeft----------------- */}
 
         <div className="buttons-choise-div">
-          <div></div>
-          <button className="buttons-choise-look" onClick={() => setRollMath(4)}>
-            4
-          </button>
-          <button className="buttons-choise-look" onClick={() => setRollMath(6)}>
-            6
-          </button>
-          <div></div>
-          <button className="buttons-choise-look" onClick={() => setRollMath(8)}>
-            8
-          </button>
+          <img src={Dice4} alt="dice4" onClick={() => setRollMath(4)} className="dice4" />
+
+          <img src={Dice6} alt="dice6" onClick={() => setRollMath(6)} className="dice6" />
+
+          <img src={Dice8} alt="dice8" onClick={() => setRollMath(8)} className="dice8" />
           <button className="buttons-choise-look" onClick={() => setRollMath(10)}>
             10
           </button>
