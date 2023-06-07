@@ -4,6 +4,10 @@ import HistoryList from '../img/history.png';
 import Dice4 from '../img/dice4.png';
 import Dice6 from '../img/dice6.png';
 import Dice8 from '../img/dice8.png';
+import Dice10 from '../img/dice10.png';
+import Dice12 from '../img/dice12.png';
+import Dice20 from '../img/dice20.png';
+import Dice100 from '../img/dice100.png';
 
 const CalcDMG = () => {
   // ---------------------------------- //
@@ -745,25 +749,48 @@ const CalcDMG = () => {
         {/* -----------------ButtonsOnLeft----------------- */}
 
         <div className="buttons-choise-div">
-          <img src={Dice4} alt="dice4" onClick={() => setRollMath(4)} className="dice4" />
-
-          <img src={Dice6} alt="dice6" onClick={() => setRollMath(6)} className="dice6" />
-
-          <img src={Dice8} alt="dice8" onClick={() => setRollMath(8)} className="dice8" />
-          <button className="buttons-choise-look" onClick={() => setRollMath(10)}>
-            10
-          </button>
-          <div></div>
-          <button className="buttons-choise-look" onClick={() => setRollMath(12)}>
-            12
-          </button>
-          <button className="buttons-choise-look" onClick={() => setRollMath(20)}>
-            20
-          </button>
-          <div></div>
-          <button className="buttons-choise-look  hundred" onClick={() => setRollMath(100)}>
-            100
-          </button>
+          <img
+            src={Dice4}
+            alt="dice4"
+            onClick={() => setRollMath(4)}
+            className={`dice4 ${rollMath === 4 ? 'highlight' : ''}`}
+          />
+          <img
+            src={Dice6}
+            alt="dice6"
+            onClick={() => setRollMath(6)}
+            className={`dice6 ${rollMath === 6 ? 'highlight' : ''}`}
+          />
+          <img
+            src={Dice8}
+            alt="dice8"
+            onClick={() => setRollMath(8)}
+            className={`dice8 ${rollMath === 8 ? 'highlight' : ''}`}
+          />
+          <img
+            src={Dice10}
+            alt="dice10"
+            onClick={() => setRollMath(10)}
+            className={`dice10 ${rollMath === 10 ? 'highlight' : ''}`}
+          />
+          <img
+            src={Dice12}
+            alt="dice12"
+            onClick={() => setRollMath(12)}
+            className={`dice12 ${rollMath === 12 ? 'highlight' : ''}`}
+          />
+          <img
+            src={Dice20}
+            alt="dice20"
+            onClick={() => setRollMath(20)}
+            className={`dice20 ${rollMath === 20 ? 'highlight' : ''}`}
+          />
+          <img
+            src={Dice100}
+            alt="dice100"
+            onClick={() => setRollMath(100)}
+            className={`dice100 ${rollMath === 100 ? 'highlight' : ''}`}
+          />
         </div>
       </div>
     </>

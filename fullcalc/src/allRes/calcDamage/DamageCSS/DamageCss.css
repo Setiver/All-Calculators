@@ -470,18 +470,56 @@ input[type='number'] {
   font-size: 2.5rem;
   position: absolute;
 }
-/* button choise */
+/* dice button choise */
 
 .buttons-choise-div {
   position: absolute;
   top: 28%;
   left: 1.5%;
+  z-index: -2;
 }
 
 .dice4,
 .dice6,
-.dice8 {
+.dice8,
+.dice10,
+.dice12,
+.dice20,
+.dice100 {
   width: 7rem;
+  position: relative;
+  cursor: pointer;
+  filter: drop-shadow(-6px 8px 4px #434343);
+}
+.highlight {
+  filter: brightness(150%) drop-shadow(-6px 8px 4px #434343);
+}
+.dice6 {
+  top: 4rem;
+}
+
+.dice8 {
+  top: 10rem;
+  right: 14rem;
+}
+.dice10 {
+  top: 15rem;
+  right: 14rem;
+}
+
+.dice12 {
+  top: 21rem;
+  right: 27rem;
+}
+
+.dice20 {
+  top: 25rem;
+  right: 26rem;
+}
+
+.dice100 {
+  top: 31rem;
+  right: 40rem;
 }
 
 /* -------------------------- */
