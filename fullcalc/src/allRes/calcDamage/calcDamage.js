@@ -8,6 +8,10 @@ import Dice10 from '../img/dice10.png';
 import Dice12 from '../img/dice12.png';
 import Dice20 from '../img/dice20.png';
 import Dice100 from '../img/dice100.png';
+import Frame from '../img/frame.png';
+import SinFrame from '../img/sinframe.png';
+import ResetAllOrnament from '../img/resetallornament.png';
+import ResetDamageOrnament from '../img/resetDAMAGEornament.png';
 
 const CalcDMG = () => {
   // ---------------------------------- //
@@ -250,6 +254,13 @@ const CalcDMG = () => {
       rollBackground.current.style.backgroundColor = 'rgb(213, 113, 0)';
     }
   };
+  // if new roll then set sin empty
+  useEffect(() => {
+    if (rollValue !== 7) {
+      setSinValue('');
+      setSinValueFifty('');
+    }
+  }, [rollValue]);
 
   // create two buttons for 7
   const SinsRoll = () => {
@@ -298,8 +309,13 @@ const CalcDMG = () => {
     return (
       <>
         <div>
+          <img
+            src={SinFrame}
+            alt="sinframe"
+            className={`sin-frame ${sinValue === '' ? 'slideDown' : ''} `}
+          />
           <button
-            className="number-dice-roll button-look sins"
+            className={`number-dice-roll button-look sins ${sinValue === '' ? 'slideDown' : ''} `}
             ref={sinBackground}
             onClick={sinRoll}
             value={sinsArr[sinValue]}>
@@ -307,7 +323,7 @@ const CalcDMG = () => {
           </button>
 
           <button
-            className="number-dice-roll button-look half"
+            className={`number-dice-roll button-look half ${sinValue === '' ? 'slideDown' : ''} `}
             ref={sinFiftyBackground}
             onClick={sinRollFifty}
             value={sinValueFifty}>
@@ -330,14 +346,18 @@ const CalcDMG = () => {
       <div>
         {/* -----------------ResetButtonsUPLeft----------------- */}
         <div className="reset-position">
-          <button className="button-look reset-button-all" onDoubleClick={resetOnClickAll}>
-            RESET ALL
-            <p className="reset-button-all-disclaimer">(double click)</p>
-          </button>
-
-          <button className="button-look reset-button-damage" onClick={resetOnClickDamage}>
-            RESET DAMAGE
-          </button>
+          <img
+            src={ResetAllOrnament}
+            alt="ResetAll"
+            className="ornament-reset-all"
+            onDoubleClick={resetOnClickAll}
+          />
+          <img
+            src={ResetDamageOrnament}
+            alt="ResetDamage"
+            className="ornament-reset-damage"
+            onClick={resetOnClickDamage}
+          />
         </div>
         {/* ---------------------------------------------------- */}
         {/* -----------------RightSideInputs----------------- */}
@@ -707,6 +727,7 @@ const CalcDMG = () => {
         {/* ---------------------------------------------------- */}
         {/* -----------------DiceRoll----------------- */}
         <div className="div-dice-roll">
+          <img src={Frame} alt="frame" className="frame-dice" />
           {rollValue !== 'Roll' && trialValue !== '' && trialValue !== 0 ? (
             <p className="roll-dice-equation">
               {rollValue} {trialValue > 0 ? ` + ${trialValue}` : ` - ${-trialValue} `} ={' '}
@@ -716,7 +737,7 @@ const CalcDMG = () => {
             ''
           )}
           <button
-            className="number-dice-roll button-look"
+            className="number-dice-roll button-look roll-value"
             ref={rollBackground}
             onClick={diceRollNumber}
             value={rollValue + trialValue}>
@@ -729,7 +750,10 @@ const CalcDMG = () => {
             <input
               type="number"
               className="input-look trial"
-              onChange={event => onChangeHandler(event, setTrialValue)}
+              onChange={event => {
+                onChangeHandler(event, setTrialValue);
+                setRollValue(0);
+              }}
               value={trialValue !== 0 ? trialValue : ''}
               placeholder="TRIAL"
             />
