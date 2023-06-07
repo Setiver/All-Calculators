@@ -12,6 +12,11 @@ import Frame from '../img/frame.png';
 import SinFrame from '../img/sinframe.png';
 import ResetAllOrnament from '../img/resetallornament.png';
 import ResetDamageOrnament from '../img/resetDAMAGEornament.png';
+import IceCube from '../img/icecube.png';
+import BurnCube from '../img/burncube.png';
+import PoisonCube from '../img/poisoncube.png';
+import BleedCube from '../img/bleedcube.png';
+import VoidCube from '../img/voidcube.png';
 
 const CalcDMG = () => {
   // ---------------------------------- //
@@ -602,9 +607,10 @@ const CalcDMG = () => {
         {/* -----------------Burn----------------- */}
         <div className="burn-container">
           <p className="text-up emoji">🔥</p>
+          <img src={BurnCube} alt="BurnCube" className="burn-cube" />
           <input
             type="number"
-            className="additional-damage input-look"
+            className="additional-damage input-look burn-input"
             onChange={event => onChangeHandler(event, setBurnDamageValue)}
             placeholder="0"
             value={burnDamageValue > 0 ? burnDamageValue : ''}
@@ -626,6 +632,7 @@ const CalcDMG = () => {
         </div>
         {/* -----------------Cold----------------- */}
         <div className="cold-container">
+          <img src={IceCube} alt="IceCube" className="cold-cube" />
           <p className="text-up emoji">❄️</p>
           <input
             type="number"
@@ -652,6 +659,7 @@ const CalcDMG = () => {
         {/* -----------------Poison----------------- */}
         <div className="poison-container">
           <p className="text-up emoji">🧪</p>
+          <img src={PoisonCube} alt="PoisonCube" className="poison-cube" />
           <input
             type="number"
             className="additional-damage  input-look"
@@ -677,6 +685,7 @@ const CalcDMG = () => {
         {/* -----------------Bleed----------------- */}
         <div className="bleed-container">
           <p className="text-up emoji">🩸</p>
+          <img src={BleedCube} alt="BleedCube" className="bleed-cube" />
           <input
             type="number"
             className="additional-damage  input-look"
@@ -702,6 +711,7 @@ const CalcDMG = () => {
         {/* -----------------Void----------------- */}
         <div className="void-container">
           <p className="text-up emoji">👾</p>
+          <img src={VoidCube} alt="VoidCube" className="void-cube" />
           <input
             type="number"
             className="additional-damage  input-look"

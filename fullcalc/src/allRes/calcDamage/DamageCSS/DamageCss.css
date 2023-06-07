@@ -29,6 +29,9 @@ input[type='number'] {
   appearance: textfield;
 }
 
+*:focus {
+  outline: none;
+}
 /* input look */
 .input-look {
   padding: 0.45rem;
@@ -37,7 +40,6 @@ input[type='number'] {
   font-size: 1.55rem;
   border-width: 0.15rem;
   border-color: #cccccc;
-  background-color: #ffffff;
   color: #000000;
   border-style: solid;
 }
@@ -128,6 +130,12 @@ input[type='number'] {
 
 /* burn damage */
 
+.burn-cube {
+  position: absolute;
+  top: 32%;
+  left: -30%;
+  pointer-events: none;
+}
 .burn-container {
   left: var(--burn);
 }
@@ -137,6 +145,13 @@ input[type='number'] {
 }
 
 /* cold damage */
+.cold-cube {
+  position: absolute;
+  top: 35%;
+  left: -23%;
+  pointer-events: none;
+}
+
 .cold-container {
   left: var(--cold);
 }
@@ -145,6 +160,13 @@ input[type='number'] {
 }
 
 /* poison damage */
+.poison-cube {
+  position: absolute;
+  top: 32%;
+  left: -32%;
+  pointer-events: none;
+}
+
 .poison-container {
   left: var(--poison);
 }
@@ -153,6 +175,13 @@ input[type='number'] {
 }
 
 /* bleed damage */
+.bleed-cube {
+  position: absolute;
+  top: 7%;
+  left: -32%;
+  pointer-events: none;
+}
+
 .bleed-container {
   left: var(--bleed);
 }
@@ -161,6 +190,13 @@ input[type='number'] {
 }
 
 /* void damage */
+.void-cube {
+  position: absolute;
+  top: 24%;
+  left: -40%;
+  pointer-events: none;
+}
+
 .void-container {
   left: var(--void);
 }
