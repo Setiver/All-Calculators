@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import Instruction from './Instruction';
 import DamageList from '../img/damage.png';
 import HistoryList from '../img/history.png';
 import Dice4 from '../img/dice4.png';
@@ -69,6 +70,7 @@ const CalcDMG = () => {
   const sinBackground = useRef(null);
   const sinFiftyBackground = useRef(null);
   // ---------------------------------- //
+
   // keep all resists for reset button
   const resistsAllHolder = () => {
     setResistValueDamage('');
@@ -205,17 +207,19 @@ const CalcDMG = () => {
     const barierButton = document.querySelector('.barier-button');
     const armorButton = document.querySelector('.armor-button');
     const hpButton = document.querySelector('.hp-button');
+    const voidMana =
+      voidDamageValue > 0 && resistValueVoid !== 100 ? setButtonValueMana(buttonValueMana - 1) : '';
 
     if (clickOfButton === barierButton) {
-      setButtonValueBarier(buttonValueBarier - fullValueDamage);
+      setButtonValueBarier(buttonValueBarier - fullValueDamage, voidMana);
       setHistoryHolderBarrier(historyHolderBarrier => historyHolderBarrier.concat(fullValueDamage));
     }
     if (clickOfButton === armorButton) {
-      setButtonValueArmor(buttonValueArmor - fullValueDamage);
+      setButtonValueArmor(buttonValueArmor - fullValueDamage, voidMana);
       setHistoryHolderArmor(historyHolderArmor => historyHolderArmor.concat(fullValueDamage));
     }
     if (clickOfButton === hpButton) {
-      setButtonValueHP(buttonValueHP - fullValueDamage);
+      setButtonValueHP(buttonValueHP - fullValueDamage, voidMana);
       setHistoryHolderHP(historyHolderHP => historyHolderHP.concat(fullValueDamage));
     }
   };
@@ -364,6 +368,8 @@ const CalcDMG = () => {
             onClick={resetOnClickDamage}
           />
         </div>
+        {/* -----------------Instruction----------------- */}
+        <Instruction />
         {/* ---------------------------------------------------- */}
         {/* -----------------RightSideInputs----------------- */}
         {/* -----------------BARIER----------------- */}
@@ -477,7 +483,6 @@ const CalcDMG = () => {
             {buttonValueMana}
           </button>
         </div>
-
         {/* ---------------------------------------------------- */}
         {/* -----------------LeftSideInputs----------------- */}
         {/* -----------------Damage----------------- */}
@@ -616,20 +621,22 @@ const CalcDMG = () => {
             value={burnDamageValue > 0 ? burnDamageValue : ''}
           />
         </div>
-        <div className={`burn-container-resist ${burnDamageValue > 0 ? 'show' : ''}`}>
-          <p className="text-up emoji">🚭</p>
-          <input
-            type="number"
-            className="additional-damage  input-look"
-            onChange={event => onChangeHandler(event, setResistValueBurn)}
-            placeholder="0"
-            value={
-              resistValueBurn !== 0 && resistValueBurn !== '' && resistValueBurn <= 100
-                ? resistValueBurn
-                : ''
-            }
-          />
-        </div>
+        {burnDamageValue > 0 && (
+          <div className={`burn-container-resist show `}>
+            <p className="text-up emoji">🚭</p>
+            <input
+              type="number"
+              className="additional-damage  input-look"
+              onChange={event => onChangeHandler(event, setResistValueBurn)}
+              placeholder="0"
+              value={
+                resistValueBurn !== 0 && resistValueBurn !== '' && resistValueBurn <= 100
+                  ? resistValueBurn
+                  : ''
+              }
+            />
+          </div>
+        )}
         {/* -----------------Cold----------------- */}
         <div className="cold-container">
           <img src={IceCube} alt="IceCube" className="cold-cube" />
@@ -642,20 +649,22 @@ const CalcDMG = () => {
             value={coldDamageValue > 0 ? coldDamageValue : ''}
           />
         </div>
-        <div className={`cold-container-resist ${coldDamageValue > 0 ? 'show' : ''}`}>
-          <p className="text-up emoji">🧥</p>
-          <input
-            type="number"
-            className="additional-damage  input-look"
-            onChange={event => onChangeHandler(event, setResistValueCold)}
-            placeholder="0"
-            value={
-              resistValueCold !== 0 && resistValueCold !== '' && resistValueCold <= 100
-                ? resistValueCold
-                : ''
-            }
-          />
-        </div>
+        {coldDamageValue > 0 && (
+          <div className={`cold-container-resist show`}>
+            <p className="text-up emoji">🧥</p>
+            <input
+              type="number"
+              className="additional-damage  input-look"
+              onChange={event => onChangeHandler(event, setResistValueCold)}
+              placeholder="0"
+              value={
+                resistValueCold !== 0 && resistValueCold !== '' && resistValueCold <= 100
+                  ? resistValueCold
+                  : ''
+              }
+            />
+          </div>
+        )}
         {/* -----------------Poison----------------- */}
         <div className="poison-container">
           <p className="text-up emoji">🧪</p>
@@ -668,20 +677,22 @@ const CalcDMG = () => {
             value={poisonDamageValue > 0 ? poisonDamageValue : ''}
           />
         </div>
-        <div className={`poison-container-resist ${poisonDamageValue > 0 ? 'show' : ''}`}>
-          <p className="text-up emoji">💊</p>
-          <input
-            type="number"
-            className="additional-damage  input-look"
-            onChange={event => onChangeHandler(event, setResistValuePoison)}
-            placeholder="0"
-            value={
-              resistValuePoison !== 0 && resistValuePoison !== '' && resistValuePoison <= 100
-                ? resistValuePoison
-                : ''
-            }
-          />
-        </div>
+        {poisonDamageValue > 0 && (
+          <div className={`poison-container-resist show`}>
+            <p className="text-up emoji">💊</p>
+            <input
+              type="number"
+              className="additional-damage  input-look"
+              onChange={event => onChangeHandler(event, setResistValuePoison)}
+              placeholder="0"
+              value={
+                resistValuePoison !== 0 && resistValuePoison !== '' && resistValuePoison <= 100
+                  ? resistValuePoison
+                  : ''
+              }
+            />
+          </div>
+        )}
         {/* -----------------Bleed----------------- */}
         <div className="bleed-container">
           <p className="text-up emoji">🩸</p>
@@ -694,20 +705,22 @@ const CalcDMG = () => {
             value={bleedDamageValue > 0 ? bleedDamageValue : ''}
           />
         </div>
-        <div className={`bleed-container-resist ${bleedDamageValue > 0 ? 'show' : ''}`}>
-          <p className="text-up emoji">🩹</p>
-          <input
-            type="number"
-            className="additional-damage  input-look"
-            onChange={event => onChangeHandler(event, setResistValueBleed)}
-            placeholder="0"
-            value={
-              resistValueBleed !== 0 && resistValueBleed !== '' && resistValueBleed <= 100
-                ? resistValueBleed
-                : ''
-            }
-          />
-        </div>
+        {bleedDamageValue > 0 && (
+          <div className={`bleed-container-resist show`}>
+            <p className="text-up emoji">🩹</p>
+            <input
+              type="number"
+              className="additional-damage  input-look"
+              onChange={event => onChangeHandler(event, setResistValueBleed)}
+              placeholder="0"
+              value={
+                resistValueBleed !== 0 && resistValueBleed !== '' && resistValueBleed <= 100
+                  ? resistValueBleed
+                  : ''
+              }
+            />
+          </div>
+        )}
         {/* -----------------Void----------------- */}
         <div className="void-container">
           <p className="text-up emoji">👾</p>
@@ -720,20 +733,22 @@ const CalcDMG = () => {
             value={voidDamageValue > 0 ? voidDamageValue : ''}
           />
         </div>
-        <div className={`void-container-resist ${voidDamageValue > 0 ? 'show' : ''}`}>
-          <p className="text-up emoji">🚫</p>
-          <input
-            type="number"
-            className="additional-damage  input-look"
-            onChange={event => onChangeHandler(event, setResistValueVoid)}
-            placeholder="0"
-            value={
-              resistValueVoid !== 0 && resistValueVoid !== '' && resistValueVoid <= 100
-                ? resistValueVoid
-                : ''
-            }
-          />
-        </div>
+        {voidDamageValue > 0 && (
+          <div className={`void-container-resist show`}>
+            <p className="text-up emoji">🚫</p>
+            <input
+              type="number"
+              className="additional-damage  input-look"
+              onChange={event => onChangeHandler(event, setResistValueVoid)}
+              placeholder="0"
+              value={
+                resistValueVoid !== 0 && resistValueVoid !== '' && resistValueVoid <= 100
+                  ? resistValueVoid
+                  : ''
+              }
+            />
+          </div>
+        )}
         {/* ---------------------------------------------------- */}
         {/* -----------------DiceRoll----------------- */}
         <div className="div-dice-roll">
@@ -779,9 +794,7 @@ const CalcDMG = () => {
           </div>
           {rollValue === 7 ? <SinsRoll /> : ''}
         </div>
-
         {/* -----------------ButtonsOnLeft----------------- */}
-
         <div className="buttons-choise-div">
           <img
             src={Dice4}

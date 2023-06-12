@@ -115,8 +115,22 @@ input[type='number'] {
   position: absolute;
   bottom: 2%;
   opacity: 0;
-  transition: opacity 0.3s ease-in-out;
+  transition: opacity 0.5s ease-in-out;
   transform: translate(-50%, -50%);
+}
+
+.show {
+  opacity: 1; /* Pokaż z animacją */
+  animation: fade-in 0.5s ease-in-out;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 :root {
@@ -136,6 +150,7 @@ input[type='number'] {
   left: -30%;
   pointer-events: none;
 }
+
 .burn-container {
   left: var(--burn);
 }
@@ -205,13 +220,6 @@ input[type='number'] {
   left: calc(var(--void) + var(--offset));
 }
 
-.burn-container-resist.show,
-.cold-container-resist.show,
-.poison-container-resist.show,
-.bleed-container-resist.show,
-.void-container-resist.show {
-  opacity: 1;
-}
 /* --------------------------------------------- */
 /* buttons that show up */
 
@@ -616,3 +624,63 @@ input[type='number'] {
   font-size: 3rem;
 }
 /* } */
+/* -------------Instruction----------- */
+.instruction-button {
+  position: absolute;
+  right: 10%;
+  top: 3%;
+  height: 2rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+.dialogs {
+  position: absolute;
+  text-align: center;
+  z-index: 10;
+  width: 15rem;
+}
+
+.reset-dialog {
+  left: 22%;
+  top: 2%;
+}
+.dice-dialog {
+  left: 12%;
+  top: 68%;
+}
+.damage-dialog {
+  left: 1%;
+  top: 27%;
+}
+.list-dialog {
+  left: 27%;
+  top: 35%;
+}
+.history-dialog {
+  left: 60%;
+  top: 35%;
+}
+.additional-dialog {
+  left: 75%;
+  top: 70%;
+  width: 25rem;
+  line-height: 1rem;
+}
+.right-dialog {
+  left: 87%;
+  top: 27%;
+}
+.roll-dialog {
+  left: 44%;
+  top: 26%;
+  line-height: 1.2rem;
+}
+.close-dialog {
+  left: 70%;
+  top: 1%;
+}
+.button-right-dialog {
+  left: 87%;
+  top: 8%;
+  line-height: 1rem;
+}
