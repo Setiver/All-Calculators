@@ -209,14 +209,16 @@ const CalcDMG = () => {
     const hpButton = document.querySelector('.hp-button');
     const voidMana =
       voidDamageValue > 0 && resistValueVoid !== 100 ? setButtonValueMana(buttonValueMana - 1) : '';
+    const burnArmor = Math.trunc(burnDamageValue / 100 *20);
+    const poisonBarier = Math.trunc(buttonValueBarier / 10);
 
     if (clickOfButton === barierButton) {
-      setButtonValueBarier(buttonValueBarier - fullValueDamage, voidMana);
-      setHistoryHolderBarrier(historyHolderBarrier => historyHolderBarrier.concat(fullValueDamage));
+      setButtonValueBarier(buttonValueBarier - fullValueDamage - poisonBarier, voidMana);
+      setHistoryHolderBarrier(historyHolderBarrier => historyHolderBarrier.concat(fullValueDamage+poisonBarier));
     }
     if (clickOfButton === armorButton) {
-      setButtonValueArmor(buttonValueArmor - fullValueDamage, voidMana);
-      setHistoryHolderArmor(historyHolderArmor => historyHolderArmor.concat(fullValueDamage));
+      setButtonValueArmor(buttonValueArmor - fullValueDamage - burnArmor, voidMana);
+      setHistoryHolderArmor(historyHolderArmor => historyHolderArmor.concat(fullValueDamage + burnArmor));
     }
     if (clickOfButton === hpButton) {
       setButtonValueHP(buttonValueHP - fullValueDamage, voidMana);

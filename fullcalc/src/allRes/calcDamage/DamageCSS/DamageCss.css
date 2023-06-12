@@ -673,7 +673,7 @@ input[type='number'] {
   left: 75%;
   top: 70%;
   width: 25rem;
-  line-height: 1rem;
+  line-height: 0.9rem;
 }
 .right-dialog {
   left: 87%;

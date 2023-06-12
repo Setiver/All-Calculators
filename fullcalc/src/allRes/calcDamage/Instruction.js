@@ -66,9 +66,9 @@ const Instruction = () => {
             <p>
               Here are additional squares for magic damage. When you add something in them, new
               squares will appear with their own Resist%.
-              <p>Fire - Add aditional Damage for Armor</p>
+              <p>Burn - Add aditional 20% Burn Damage for Armor</p>
               <p>Ice - You loose your additional move</p>
-              <p>Poison - Take additionaly 10% of your Barrier</p>
+              <p>Poison - Take additionaly 10% of your actual Barrier</p>
               <p>Bleed - You loose efery turn this much HP</p>
               <p>Void - Eatch time you get hit you loose 1 mana</p>
             </p>
@@ -90,7 +90,7 @@ const Instruction = () => {
             <p>
               When you click it, it will show a random number depending on choosed dice.
               <p>TRIAL - add a modivicator to the rolled number. </p>
-              <p>Prev - show you your previous rolled number</p>
+              <p>Prev - show your previous rolled number</p>
               <p>
                 There're few special numbers that will not add modivicators to them. When you roll
                 them, the Roll square will change color.{' '}
