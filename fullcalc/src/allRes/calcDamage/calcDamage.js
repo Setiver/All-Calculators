@@ -520,13 +520,13 @@ const CalcDMG = () => {
           <img src={DamageList} alt="damage" className="damage-list-png" />
           {/* <p className="full-damage-text-up">DAMAGE</p> */}
           <ul className="list-group left">
-            {damageValue > 0 ? <li className="list-group-item">⚔ Damage: {damageValue}</li> : ''}
+            {damageValue > 0 ? <li className="list-group-item">⚔️ Damage: {damageValue}</li> : ''}
             {resistValueDamage !== 0 && resistValueDamage !== '' && resistValueDamage <= 100 ? (
-              <li className="list-group-item">🛡 Resistance: {resistValueDamage}%</li>
+              <li className="list-group-item">🛡️ Resistance: {resistValueDamage}%</li>
             ) : (
               ''
             )}
-            {healValue > 0 ? <li className="list-group-item">❤ Heal: {healValue}</li> : ''}
+            {healValue > 0 ? <li className="list-group-item">❤️ Heal: {healValue}</li> : ''}
             {burnDamageValue > 0 ? (
               <li className="list-group-item">🔥 Burn: {burnDamageValue}</li>
             ) : (
@@ -536,7 +536,7 @@ const CalcDMG = () => {
             resistValueBurn !== '' &&
             resistValueBurn <= 100 &&
             burnDamageValue !== 0 ? (
-              <li className="list-group-item">🚭 Burn Res: {resistValueBurn}%</li>
+              <li className="list-group-item">🧯 Burn Res: {resistValueBurn}%</li>
             ) : (
               ''
             )}
@@ -623,7 +623,7 @@ const CalcDMG = () => {
         </div>
         {burnDamageValue > 0 && (
           <div className={`burn-container-resist show `}>
-            <p className="text-up emoji">🚭</p>
+            <p className="text-up emoji">🧯</p>
             <input
               type="number"
               className="additional-damage  input-look"

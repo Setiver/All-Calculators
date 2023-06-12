@@ -323,7 +323,16 @@ input[type='number'] {
 .ornament-reset-damage {
   width: 14rem;
   cursor: pointer;
+  filter: drop-shadow(-6px 8px 4px #434343);
 }
+.ornament-reset-all:hover,
+.ornament-reset-damage:hover
+{
+  filter: brightness(150%) drop-shadow(-6px 8px 4px #434343);
+  position: relative;
+  top: 0.1rem;
+}
+
 .reset-position {
   position: absolute;
   top: 12%;
@@ -378,13 +387,13 @@ input[type='number'] {
   background-color: transparent;
   color: rgb(0, 0, 0);
   padding: 0.1rem;
-  bottom: 0.5rem;
   border: none;
   font-size: 1.25rem;
 }
 
 .list-group.left {
   padding-bottom: 1rem;
+  padding-top: 0.5rem;
   height: 17rem;
   top: 1.5rem;
 }

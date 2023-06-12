@@ -12,8 +12,6 @@ import RunesLvL from './allRes/calcRunes/Runes';
 import './allRes/calcHeal/HealCSS/Heal.css';
 import './allRes/calcHeal/HealCSS/Heal-mobileM.css';
 import './allRes/calcDamage/DamageCSS/DamageCss.css';
-import './allRes/calcDamage/DamageCSS/DamageCss-Mobile.css';
-import './allRes/calcDamage/DamageCSS/DamageCss-Laptop.css';
 import './allRes/calcRunes/RunesCss.css/Runes.css';
 
 function App() {
