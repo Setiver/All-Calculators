@@ -285,7 +285,6 @@ const HealMobile = () => {
             <CheckInTable check={32} time={50 * 24} gold={20000} goldTime={6 * 24} type={'Left Ear'} />
             <CheckInTable check={33} time={50 * 24} gold={20000} goldTime={6 * 24} type={'Right Ear'} />
             <CheckInTable check={34} time={60 * 24} gold={20000} goldTime={6 * 24} type={'Tongue'} />
-            <CheckInTable check={35} time={69 * 24} gold={6900} goldTime={6 * 24 + 9} type={'Dick'} />
             <CheckInTable check={36} time={7 * 24} gold={20000} goldTime={24} type={'Hair'} />
           </tbody>
         </table>
